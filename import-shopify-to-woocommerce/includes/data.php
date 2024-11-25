@@ -279,6 +279,7 @@ Deny from all
 			if ( ! $meta_key ) {
 				$meta_key = "_s2w_shopify_{$type}_id";
 			}
+
 			if ( $count ) {
 				$query   = "SELECT count(*) from {$table_postmeta} join {$table_posts} on {$table_postmeta}.post_id={$table_posts}.ID where {$table_posts}.post_type = '{$post_type}' and {$table_postmeta}.meta_key = '{$meta_key}' and {$table_postmeta}.meta_value = %s";
 				$results = $wpdb->get_var( $wpdb->prepare( $query, $shopify_id ) );//phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared,WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching
@@ -524,5 +525,25 @@ Deny from all
 
 	public static function get_image_file_extension_reg() {
 		return '/[^\?]+\.(jpg|JPG|jpeg|JPEG|jpe|JPE|gif|GIF|png|PNG|webp|WEBP|heic|HEIC)/';
+	}
+
+	public static function get_functionality() {
+		return array(
+			'change_settings' => esc_html__( 'Change the plugin\'s main settings and import data via API', 'import-shopify-to-woocommerce' ),
+			'import_csv'      => esc_html__( 'Import CSV', 'import-shopify-to-woocommerce' ),
+			'cron_products'   => esc_html__( 'Change Cron products sync', 'import-shopify-to-woocommerce' ),
+			'cron_orders'     => esc_html__( 'Change Cron orders sync', 'import-shopify-to-woocommerce' ),
+			'webhooks'        => esc_html__( 'Change webhooks settings', 'import-shopify-to-woocommerce' ),
+			'import_by_id'    => esc_html__( 'Import by ID', 'import-shopify-to-woocommerce' ),
+			'failed_images'   => esc_html__( 'Failed Images', 'import-shopify-to-woocommerce' ),
+			'access_logs'     => esc_html__( 'Logs', 'import-shopify-to-woocommerce' ),
+		);
+	}
+
+	public static function get_capabilities( $functionality ) {
+		return array(
+			'manage_options',
+			'manage_woocommerce'
+		);
 	}
 }

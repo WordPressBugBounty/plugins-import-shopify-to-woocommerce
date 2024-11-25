@@ -3,7 +3,7 @@
  * Plugin Name: S2W - Import Shopify to WooCommerce
  * Plugin URI: https://villatheme.com/extensions/import-shopify-to-woocommerce
  * Description: Easily migrate all Shopify products and their collections(categories) to WooCommerce after several clicks
- * Version: 1.2.1
+ * Version: 1.2.2
  * Author: VillaTheme
  * Author URI: https://villatheme.com
  * License:           GPL v2 or later
@@ -11,17 +11,23 @@
  * Text Domain: import-shopify-to-woocommerce
  * Domain Path: /languages
  * Copyright 2019-2024 VillaTheme.com. All rights reserved.
- * Tested up to: 6.6
+ * Tested up to: 6.7
  * WC requires at least: 7.0.0
- * WC tested up to: 9.0.2
+ * WC tested up to: 9.4
  * Requires PHP: 7.0
  * Requires Plugins: woocommerce
  **/
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-define( 'VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION', '1.2.1' );
+define( 'VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION', '1.2.2' );
 include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+add_action( 'before_woocommerce_init', function () {
+	if ( class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
+		\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
+		\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'cart_checkout_blocks', __FILE__, true );
+	}
+} );
 if ( is_plugin_active( 's2w-import-shopify-to-woocommerce/s2w-import-shopify-to-woocommerce.php' ) ) {
 	return;
 }
@@ -30,40 +36,7 @@ define( 'VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_INCLUDES', VI_IMPORT_SHOPIFY_TO_WOOCOM
 if ( is_file( VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_INCLUDES . "class-s2w-error-images-table.php" ) ) {
 	require_once VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_INCLUDES . "class-s2w-error-images-table.php";
 }
-if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
-	$init_file = WP_PLUGIN_DIR . DIRECTORY_SEPARATOR . "import-shopify-to-woocommerce" . DIRECTORY_SEPARATOR . "includes" . DIRECTORY_SEPARATOR . "define.php";
-	require_once $init_file;
-} else {
-	add_action( 'plugins_loaded', 'plugins_loaded' );
-	/**
-	 * Notify if WooCommerce is not activated
-	 */
-	function plugins_loaded() {
-		if ( ! class_exists( 'VillaTheme_Require_Environment' ) ) {
-			include_once VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_INCLUDES . 'support.php';
-		}
 
-		$environment = new \VillaTheme_Require_Environment( [
-				'plugin_name'     => 'S2W - Import Shopify to WooCommerce',
-				'php_version'     => '7.0',
-				'wp_version'      => '5.0',
-				'wc_version'      => '7.0',
-				'require_plugins' => [
-					[
-						'slug' => 'woocommerce',
-						'name' => 'WooCommerce',
-					],
-				]
-			]
-		);
-
-		if ( $environment->has_error() ) {
-			return;
-		}
-	}
-
-	return;
-}
 
 if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
 	class IMPORT_SHOPIFY_TO_WOOCOMMERCE {
@@ -75,13 +48,11 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
 
 		public function __construct() {
 			register_activation_hook( __FILE__, array( __CLASS__, 'register_activation_hook' ) );
-			vi_s2w_init_set();
-			$this->settings = VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_DATA::get_instance();
+
 			$this->is_page  = false;
 			add_action( 'init', array( $this, 'init' ) );
 			add_action( 'plugins_loaded', array( $this, 'plugins_loaded' ) );
 			//compatible with 'High-Performance order storage (COT)'
-			add_action( 'before_woocommerce_init', array( $this, 'before_woocommerce_init' ) );
 			add_action( 'admin_notices', array( $this, 'admin_notices' ) );
 			add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 			add_action( 'admin_menu', array( $this, 'admin_menu_system_log' ), 20 );
@@ -100,12 +71,7 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
 			add_action( 'wp_ajax_s2w_view_log', array( $this, 'generate_log_ajax' ) );
 			add_action( 'admin_init', array( $this, 'update_data_new_version' ) );
 		}
-		public function before_woocommerce_init() {
-			if ( class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
-				\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
-				\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'cart_checkout_blocks', __FILE__, true );
-			}
-		}
+
 		public static function register_activation_hook() {
 			S2W_Error_Images_Table::create_table();
 			S2W_Error_Images_Table::add_column( 'image_id' );
@@ -238,9 +204,9 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
 				return;
 			}
 			ob_start();
-			$keyword = filter_input( INPUT_GET, 'keyword', FILTER_SANITIZE_STRING );
+			$keyword = isset( $_GET['keyword'] ) ? sanitize_text_field( $_GET['keyword'] ) : '';
 			if ( ! $keyword ) {
-				$keyword = filter_input( INPUT_POST, 'keyword', FILTER_SANITIZE_STRING );
+				$keyword = isset( $_POST['keyword'] ) ? sanitize_text_field( $_POST['keyword'] ) : '';
 			}
 			if ( empty( $keyword ) ) {
 				die();
@@ -276,11 +242,11 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
 						<?php esc_html_e( 'S2W - Import Shopify to WooCommerce: Product images are being downloaded in the background.', 'import-shopify-to-woocommerce' ) ?>
                     </h4>
                     <div>
-						<?php printf( wp_kses_post( 'Please goto <a target="_blank" href="%s">Media</a> and view downloaded images. If <strong>some images are downloaded repeatedly and no new images are downloaded</strong>, please:' ), esc_url(admin_url( 'upload.php' )), esc_url( add_query_arg( array( 's2w_cancel_download_image' => '1', ) ) ) ) ?>
+						<?php printf( wp_kses_post( 'Please goto <a target="_blank" href="%s">Media</a> and view downloaded images. If <strong>some images are downloaded repeatedly and no new images are downloaded</strong>, please:' ), esc_url( admin_url( 'upload.php' ) ), esc_url( add_query_arg( array( 's2w_cancel_download_image' => '1', ) ) ) ) ?>
                         <ol>
                             <li><?php printf( wp_kses_post( '<strong>Stop importing products immediately</strong>' ) ) ?></li>
-                            <li><?php printf( wp_kses_post(  '<a class="s2w-cancel-download-images-button" href="%s">Cancel downloading</a></strong>' ), esc_url(add_query_arg( array( 's2w_cancel_download_image' => '1', ), $_SERVER['REQUEST_URI'] ) )) ?></li>
-                            <li><?php printf( wp_kses_post(  'Contact <strong>support@villatheme.com</strong> or create your ticket at <a target="_blank" href="https://villatheme.com/supports/forum/plugins/import-shopify-to-woocommerce/">https://villatheme.com/supports/forum/plugins/import-shopify-to-woocommerce/</a>' ) ) ?></li>
+                            <li><?php printf( wp_kses_post( '<a class="s2w-cancel-download-images-button" href="%s">Cancel downloading</a></strong>' ), esc_url( add_query_arg( array( 's2w_cancel_download_image' => '1', ), $_SERVER['REQUEST_URI'] ) ) ) ?></li>
+                            <li><?php printf( wp_kses_post( 'Contact <strong>support@villatheme.com</strong> or create your ticket at <a target="_blank" href="https://villatheme.com/supports/forum/plugins/import-shopify-to-woocommerce/">https://villatheme.com/supports/forum/plugins/import-shopify-to-woocommerce/</a>' ) ) ?></li>
                         </ol>
                     </div>
                 </div>
@@ -293,10 +259,10 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
                     </h4>
                     <ol>
                         <li>
-							<?php printf( wp_kses_post(  'If the same images are downloaded again and again, please <strong><a class="s2w-empty-queue-images-button" href="%s">Empty queue</a></strong> and go to Products to update missing images for your products.' ), esc_url( add_query_arg( array( 's2w_cancel_download_image' => '1', ) ) ) ) ?>
+							<?php printf( wp_kses_post( 'If the same images are downloaded again and again, please <strong><a class="s2w-empty-queue-images-button" href="%s">Empty queue</a></strong> and go to Products to update missing images for your products.' ), esc_url( add_query_arg( array( 's2w_cancel_download_image' => '1', ) ) ) ) ?>
                         </li>
                         <li>
-							<?php printf( wp_kses_post( 'If products images were downloading normally before, please <strong><a class="s2w-start-download-images-button" href="%s">Resume download</a></strong>'), esc_url( add_query_arg( array( 's2w_start_download_image' => '1', ) ) ) ) ?>
+							<?php printf( wp_kses_post( 'If products images were downloading normally before, please <strong><a class="s2w-start-download-images-button" href="%s">Resume download</a></strong>' ), esc_url( add_query_arg( array( 's2w_start_download_image' => '1', ) ) ) ) ?>
                         </li>
                     </ol>
                 </div>
@@ -314,6 +280,35 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
 		}
 
 		public function plugins_loaded() {
+			if ( ! class_exists( 'VillaTheme_Require_Environment' ) ) {
+				include_once VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_INCLUDES . 'support.php';
+			}
+
+			$environment = new \VillaTheme_Require_Environment( [
+					'plugin_name'     => 'S2W - Import Shopify to WooCommerce',
+					'php_version'     => '7.0',
+					'wp_version'      => '5.0',
+					'wc_version'      => '7.0',
+					'require_plugins' => [
+						[
+							'slug'    => 'woocommerce',
+							'name'    => 'WooCommerce',
+							'file'    => 'woocommerce/woocommerce.php',
+							'version' => '5.0',
+						],
+					]
+				]
+			);
+
+			if ( $environment->has_error() ) {
+				return;
+			}
+
+			$init_file = WP_PLUGIN_DIR . DIRECTORY_SEPARATOR . "import-shopify-to-woocommerce" . DIRECTORY_SEPARATOR . "includes" . DIRECTORY_SEPARATOR . "define.php";
+			require_once $init_file;
+			vi_s2w_init_set();
+			$this->settings = VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_DATA::get_instance();
+
 			$this->process_new = new WP_IMPORT_SHOPIFY_TO_WOOCOMMERCE_Process_New();
 			if ( isset( $_REQUEST['s2w_cancel_download_image'] ) && wp_unslash( sanitize_text_field( $_REQUEST['s2w_cancel_download_image'] ) ) ) {//phpcs:ignore WordPress.Security.NonceVerification.Recommended
 				delete_transient( 's2w_background_processing_complete' );
@@ -1813,7 +1808,7 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
 		public function admin_enqueue_script() {
 			global $pagenow;
 			$page = isset( $_REQUEST['page'] ) ? sanitize_text_field( $_REQUEST['page'] ) : '';//phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			wp_enqueue_script( 'import-shopify-to-woocommerce-cancel-download-images', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_JS . 'cancel-download-images.js', array( 'jquery' ), VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION,true );
+			wp_enqueue_script( 'import-shopify-to-woocommerce-cancel-download-images', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_JS . 'cancel-download-images.js', array( 'jquery' ), VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION, true );
 			if ( $pagenow === 'admin.php' && $page === 'import-shopify-to-woocommerce' ) {
 				add_action( 'admin_footer', array( $this, 'modal_option' ) );
 				$this->is_page = true;
@@ -1834,31 +1829,31 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
 				wp_dequeue_script( 'select-js' );//Causes select2 error, from ThemeHunk MegaMenu Plus plugin
 				wp_dequeue_style( 'eopa-admin-css' );
 				// style
-				wp_enqueue_style( 'import-shopify-to-woocommerce-message', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_CSS . 'message.min.css' , '', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION);
+				wp_enqueue_style( 'import-shopify-to-woocommerce-message', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_CSS . 'message.min.css', '', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION );
 				wp_enqueue_style( 'import-shopify-to-woocommerce-form', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_CSS . 'form.min.css', '', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION );
-				wp_enqueue_style( 'import-shopify-to-woocommerce-button', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_CSS . 'button.min.css' , '', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION);
+				wp_enqueue_style( 'import-shopify-to-woocommerce-button', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_CSS . 'button.min.css', '', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION );
 				wp_enqueue_style( 'import-shopify-to-woocommerce-icon', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_CSS . 'icon.min.css', '', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION );
-				wp_enqueue_style( 'import-shopify-to-woocommerce-dropdown', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_CSS . 'dropdown.min.css' , '', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION);
-				wp_enqueue_style( 'import-shopify-to-woocommerce-checkbox', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_CSS . 'checkbox.min.css' , '', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION);
-				wp_enqueue_style( 'import-shopify-to-woocommerce-transition', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_CSS . 'transition.min.css' , '', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION);
-				wp_enqueue_style( 'import-shopify-to-woocommerce-segment', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_CSS . 'segment.min.css' , '', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION);
+				wp_enqueue_style( 'import-shopify-to-woocommerce-dropdown', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_CSS . 'dropdown.min.css', '', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION );
+				wp_enqueue_style( 'import-shopify-to-woocommerce-checkbox', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_CSS . 'checkbox.min.css', '', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION );
+				wp_enqueue_style( 'import-shopify-to-woocommerce-transition', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_CSS . 'transition.min.css', '', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION );
+				wp_enqueue_style( 'import-shopify-to-woocommerce-segment', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_CSS . 'segment.min.css', '', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION );
 				wp_enqueue_style( 'import-shopify-to-woocommerce-menu', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_CSS . 'menu.min.css', '', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION );
 				wp_enqueue_style( 'import-shopify-to-woocommerce-progress', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_CSS . 'progress.min.css', '', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION );
 				wp_enqueue_style( 'import-shopify-to-woocommerce-accordion', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_CSS . 'accordion.min.css', '', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION );
-				wp_enqueue_style( 'import-shopify-to-woocommerce-table', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_CSS . 'table.min.css' , '', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION);
-				wp_enqueue_style( 'import-shopify-to-woocommerce-select2', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_CSS . 'select2.min.css' , '', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION);
+				wp_enqueue_style( 'import-shopify-to-woocommerce-table', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_CSS . 'table.min.css', '', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION );
+				wp_enqueue_style( 'import-shopify-to-woocommerce-select2', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_CSS . 'select2.min.css', '', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION );
 
 				wp_enqueue_style( 'import-shopify-to-woocommerce-admin', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_CSS . 'admin-style.css', '', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION );
-				wp_enqueue_style( 'villatheme-support', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_CSS . 'villatheme-support.css' , '', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION);
+				wp_enqueue_style( 'villatheme-support', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_CSS . 'villatheme-support.css', '', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION );
 				//script
-				wp_enqueue_script( 'import-shopify-to-woocommerce-form', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_JS . 'form.min.js', array( 'jquery' ), VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION ,true);
-				wp_enqueue_script( 'import-shopify-to-woocommerce-checkbox', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_JS . 'checkbox.min.js', array( 'jquery' ), VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION,true );
-				wp_enqueue_script( 'import-shopify-to-woocommerce-dropdown', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_JS . 'dropdown.min.js', array( 'jquery' ), VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION ,true);
-				wp_enqueue_script( 'import-shopify-to-woocommerce-transition', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_JS . 'transition.min.js', array( 'jquery' ), VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION ,true);
-				wp_enqueue_script( 'import-shopify-to-woocommerce-progress', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_JS . 'progress.min.js', array( 'jquery' ), VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION,true );
-				wp_enqueue_script( 'import-shopify-to-woocommerce-accordion', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_JS . 'accordion.min.js', array( 'jquery' ), VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION ,true);
-				wp_enqueue_script( 'import-shopify-to-woocommerce-select2', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_JS . 'select2.js', array( 'jquery' ), VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION ,true);
-				wp_enqueue_script( 'import-shopify-to-woocommerce-admin', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_JS . 'admin-script.js', array( 'jquery' ), VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION,true );
+				wp_enqueue_script( 'import-shopify-to-woocommerce-form', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_JS . 'form.min.js', array( 'jquery' ), VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION, true );
+				wp_enqueue_script( 'import-shopify-to-woocommerce-checkbox', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_JS . 'checkbox.min.js', array( 'jquery' ), VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION, true );
+				wp_enqueue_script( 'import-shopify-to-woocommerce-dropdown', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_JS . 'dropdown.min.js', array( 'jquery' ), VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION, true );
+				wp_enqueue_script( 'import-shopify-to-woocommerce-transition', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_JS . 'transition.min.js', array( 'jquery' ), VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION, true );
+				wp_enqueue_script( 'import-shopify-to-woocommerce-progress', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_JS . 'progress.min.js', array( 'jquery' ), VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION, true );
+				wp_enqueue_script( 'import-shopify-to-woocommerce-accordion', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_JS . 'accordion.min.js', array( 'jquery' ), VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION, true );
+				wp_enqueue_script( 'import-shopify-to-woocommerce-select2', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_JS . 'select2.js', array( 'jquery' ), VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION, true );
+				wp_enqueue_script( 'import-shopify-to-woocommerce-admin', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_JS . 'admin-script.js', array( 'jquery' ), VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION, true );
 				$history           = get_option( 's2w_' . $this->settings->get_params( 'domain' ) . '_history', array(
 					'total_products'         => 0,
 					'total_pages'            => 0,
@@ -2056,7 +2051,7 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
                                                    name="<?php echo esc_attr( self::set( 'access_token', true ) ) ?>"
                                                    id="<?php echo esc_attr( self::set( 'access_token' ) ) ?>"
                                                    value="<?php echo esc_attr( htmlentities( $this->settings->get_params( 'access_token' ) ) ) ?>">
-                                            <p class="description"><?php echo wp_kses_post(  'If you use <a target="_blank" href="https://help.shopify.com/en/manual/apps/custom-apps">custom apps</a>, please enter access token here. API key and API password are not used in this case so just ignore them.' ) ?></p>
+                                            <p class="description"><?php echo wp_kses_post( 'If you use <a target="_blank" href="https://help.shopify.com/en/manual/apps/custom-apps">custom apps</a>, please enter access token here. API key and API password are not used in this case so just ignore them.' ) ?></p>
                                             <p class="description"><?php esc_html_e( 'If you still need to use the deprecated private apps, please delete the access token field above.', 'import-shopify-to-woocommerce' ) ?></p>
                                         </td>
                                     </tr>
@@ -2109,6 +2104,23 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
                                                    name="<?php echo esc_attr( self::set( 'request_timeout', true ) ) ?>"
                                                    id="<?php echo esc_attr( self::set( 'request_timeout' ) ) ?>"
                                                    value="<?php echo esc_attr( $this->settings->get_params( 'request_timeout' ) ) ?>">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <div class="vi-ui positive small message">
+                                                <div class="header"><?php esc_html_e( 'Manage required user capability to be able to change settings or use plugin', 'import-shopify-to-woocommerce' ); ?></div>
+                                                <ul class="list">
+                                                    <li><?php esc_html_e( 'Only Administrators can access required user capability settings and API credentials ', 'import-shopify-to-woocommerce' ); ?></li>
+                                                    <li><?php esc_html_e( 'manage_options = only Administrators can access', 'import-shopify-to-woocommerce' ); ?></li>
+                                                    <li><?php esc_html_e( 'manage_woocommerce = both Administrators and Shop managers can access', 'import-shopify-to-woocommerce' ); ?></li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+											<?php IMPORT_SHOPIFY_TO_WOOCOMMERCE::upgrade_button(); ?>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -2241,7 +2253,7 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
                                                            name="<?php echo esc_attr( self::set( 'disable_background_process', true ) ) ?>"
                                                            id="<?php echo esc_attr( self::set( 'disable_background_process' ) ) ?>"
                                                            value="1" <?php checked( $this->settings->get_params( 'disable_background_process' ), '1' ) ?>>
-                                                    <label for="<?php echo esc_attr( self::set( 'disable_background_process' ) ) ?>"><?php echo wp_kses_post('Product images will be added to <a href="admin.php?page=import-shopify-to-woocommerce-error-images" target="_blank">Failed images</a> list so that you can go there to import all images with 1 click. This is recommended if your server is weak or if you usually have duplicated images issue.' ) ?></label>
+                                                    <label for="<?php echo esc_attr( self::set( 'disable_background_process' ) ) ?>"><?php echo wp_kses_post( 'Product images will be added to <a href="admin.php?page=import-shopify-to-woocommerce-error-images" target="_blank">Failed images</a> list so that you can go there to import all images with 1 click. This is recommended if your server is weak or if you usually have duplicated images issue.' ) ?></label>
                                                 </div>
                                             </td>
                                         </tr>
@@ -2324,7 +2336,7 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
 								<?php esc_html_e( 'How to use this plugin', 'import-shopify-to-woocommerce' ) ?>
                             </div>
                             <div class="content">
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/DF3XiCeSOhQ"
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/9INWjqsTzH0"
                                         frameborder="0"
                                         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                                         allowfullscreen></iframe>
@@ -2566,7 +2578,7 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
 						if ( wp_is_writable( VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_CACHE ) ) {
 							echo '<mark class="yes">&#10004; <code class="private">' . wp_kses_post( VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_CACHE ) . '</code></mark> ';
 						} else {
-							printf( '<mark class="error">&#10005; ' . wp_kses_post(  'To allow logging, make <code>%s</code> writable or define a custom <code>VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_CACHE</code>.' ) . '</mark>', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_CACHE );//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+							printf( '<mark class="error">&#10005; ' . wp_kses_post( 'To allow logging, make <code>%s</code> writable or define a custom <code>VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_CACHE</code>.' ) . '</mark>', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_CACHE );//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 						}
 						?>
 

@@ -149,6 +149,20 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE_ADMIN_Cron_Update_Orders' ) 
                             </tr>
                             <tr>
                                 <th>
+                                    <label for="<?php echo esc_attr( self::set( 'cron_update_orders_date_paid' ) ) ?>"><?php esc_html_e( 'Sync order date paid', 'import-shopify-to-woocommerce' ) ?></label>
+                                </th>
+                                <td>
+                                    <div class="vi-ui toggle checkbox checked">
+                                        <input type="checkbox"
+                                               name="<?php echo esc_attr( self::set( 'cron_update_orders_date_paid', true ) ) ?>"
+                                               id="<?php echo esc_attr( self::set( 'cron_update_orders_date_paid' ) ) ?>"
+                                               value="1" <?php checked( $this->settings->get_params( 'cron_update_orders_date_paid' ), '1' ) ?>>
+                                        <label for="<?php echo esc_attr( self::set( 'cron_update_orders_date_paid' ) ) ?>"><?php esc_html_e( 'By default, the paid order date is determined by the order transaction date, independently of the order API. As a result, there will be a separate section with a distinct synchronization option.', 'import-shopify-to-woocommerce' ) ?></label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
                                     <label for="<?php echo esc_attr( self::set( 'cron_update_orders_options' ) ) ?>"><?php esc_html_e( 'Select options to update', 'import-shopify-to-woocommerce' ) ?></label>
                                 </th>
                                 <td>
