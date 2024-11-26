@@ -205,6 +205,9 @@ Preview S2W - Import Shopify to WooCommerce
 1. Import progress
 
 == Changelog ==
+/**1.2.3 - 2024.11.26**/
+- Fixed: Error in products page
+
 /**1.2.2 - 2024.11.25**/
 - Updated: VillaTheme_Support
 - Updated: Compatibility check with WP 6.7 and WC 9.4

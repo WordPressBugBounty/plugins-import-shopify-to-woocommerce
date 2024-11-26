@@ -28,7 +28,7 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE_ADMIN_Update_Products' ) ) {
 			$post_type = isset( $_REQUEST['post_type'] ) ? sanitize_text_field( $_REQUEST['post_type'] ) : '';// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			if ( $pagenow === 'edit.php' && $post_type === 'product' ) {
 				wp_enqueue_style( 's2w-import-shopify-to-woocommerce-update-product', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_CSS . 'update-product.css',array(),VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION );
-				wp_enqueue_script( 's2w-import-shopify-to-woocommerce-update-product', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_JS . 'update-products.js', array( 'jquery' ), VI_S2W_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION ,true);
+				wp_enqueue_script( 's2w-import-shopify-to-woocommerce-update-product', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_JS . 'update-products.js', array( 'jquery' ), VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION ,true);
                 add_action( 'admin_footer', array( $this, 'wp_footer' ) );
 			}
 		}
