@@ -10,7 +10,7 @@
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: import-shopify-to-woocommerce
  * Domain Path: /languages
- * Copyright 2019-2024 VillaTheme.com. All rights reserved.
+ * Copyright 2019-2025 VillaTheme.com. All rights reserved.
  * Tested up to: 6.7
  * WC requires at least: 7.0.0
  * WC tested up to: 9.4

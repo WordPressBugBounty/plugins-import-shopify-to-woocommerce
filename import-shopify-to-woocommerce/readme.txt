@@ -101,7 +101,7 @@ Preview S2W - Import Shopify to WooCommerce
 
 - [Project Page](https://villatheme.com)
 - [Documentation](http://docs.villatheme.com/?item=import-shopify-to-woocommerce)
-- [Report Bugs/Issues](https://villatheme.com/supports)
+- [Report Bugs/Issues](https://villatheme.com/knowledge-base/security-is-our-priority/)
 
 ### MAY BE YOU NEED
 [SUBRE – Product Subscription for WooCommerce](https://bit.ly/subre-product-subscription-for-woo): Convert WooCommerce simple products(physical or downloadable/virtual) to subscription products and allow recurring payments
