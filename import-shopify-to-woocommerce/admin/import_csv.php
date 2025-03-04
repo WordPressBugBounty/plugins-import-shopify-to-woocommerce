@@ -7,7 +7,11 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-ini_set( 'auto_detect_line_endings', true );
+
+/*Check if php version smaller 8.0.1*/
+if ( PHP_VERSION_ID < 80100 ) {
+	ini_set( 'auto_detect_line_endings', true );
+}
 
 class IMPORT_SHOPIFY_TO_WOOCOMMERCE_ADMIN_Import_Csv {
 	protected $settings;

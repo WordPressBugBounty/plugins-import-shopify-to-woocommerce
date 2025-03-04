@@ -205,6 +205,10 @@ Preview S2W - Import Shopify to WooCommerce
 1. Import progress
 
 == Changelog ==
+/**1.2.4 - 2025.03.03**/
+- Fixed: Deprecated function issue
+- Updated: Update support file
+
 /**1.2.3 - 2024.11.26**/
 - Fixed: Error in products page
 

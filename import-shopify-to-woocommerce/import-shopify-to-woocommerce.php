@@ -3,7 +3,7 @@
  * Plugin Name: S2W - Import Shopify to WooCommerce
  * Plugin URI: https://villatheme.com/extensions/import-shopify-to-woocommerce
  * Description: Easily migrate all Shopify products and their collections(categories) to WooCommerce after several clicks
- * Version: 1.2.3
+ * Version: 1.2.4
  * Author: VillaTheme
  * Author URI: https://villatheme.com
  * License:           GPL v2 or later
@@ -13,14 +13,14 @@
  * Copyright 2019-2025 VillaTheme.com. All rights reserved.
  * Tested up to: 6.7
  * WC requires at least: 7.0.0
- * WC tested up to: 9.4
+ * WC tested up to: 9.6
  * Requires PHP: 7.0
  * Requires Plugins: woocommerce
  **/
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-define( 'VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION', '1.2.3' );
+define( 'VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION', '1.2.4' );
 include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 add_action( 'before_woocommerce_init', function () {
 	if ( class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
@@ -49,7 +49,7 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
 		public function __construct() {
 			register_activation_hook( __FILE__, array( __CLASS__, 'register_activation_hook' ) );
 
-			$this->is_page  = false;
+			$this->is_page = false;
 			add_action( 'init', array( $this, 'init' ) );
 			add_action( 'plugins_loaded', array( $this, 'plugins_loaded' ) );
 			//compatible with 'High-Performance order storage (COT)'
@@ -288,13 +288,12 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
 					'plugin_name'     => 'S2W - Import Shopify to WooCommerce',
 					'php_version'     => '7.0',
 					'wp_version'      => '5.0',
-					'wc_version'      => '7.0',
 					'require_plugins' => [
 						[
-							'slug'    => 'woocommerce',
-							'name'    => 'WooCommerce',
-							'file'    => 'woocommerce/woocommerce.php',
-							'version' => '5.0',
+							'slug'            => 'woocommerce',
+							'name'            => 'WooCommerce',
+							'defined_version' => 'WC_VERSION',
+							'version'         => '7.0',
 						],
 					]
 				]
