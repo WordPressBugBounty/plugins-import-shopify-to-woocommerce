@@ -1,3 +1,7 @@
+/**1.2.5 - 2025.06.23**/
+- Updated: Compatibility check with WP 6.8.1 and WC 9.9.4
+- Updated: Update support file
+
 /**1.2.4 - 2025.03.03**/
 - Fixed: Deprecated function issue
 - Updated: Update support file

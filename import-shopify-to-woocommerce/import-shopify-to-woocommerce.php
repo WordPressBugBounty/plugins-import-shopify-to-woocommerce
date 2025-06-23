@@ -3,7 +3,7 @@
  * Plugin Name: S2W - Import Shopify to WooCommerce
  * Plugin URI: https://villatheme.com/extensions/import-shopify-to-woocommerce
  * Description: Easily migrate all Shopify products and their collections(categories) to WooCommerce after several clicks
- * Version: 1.2.4
+ * Version: 1.2.5
  * Author: VillaTheme
  * Author URI: https://villatheme.com
  * License:           GPL v2 or later
@@ -11,16 +11,16 @@
  * Text Domain: import-shopify-to-woocommerce
  * Domain Path: /languages
  * Copyright 2019-2025 VillaTheme.com. All rights reserved.
- * Tested up to: 6.7
+ * Tested up to: 6.8.1
  * WC requires at least: 7.0.0
- * WC tested up to: 9.6
+ * WC tested up to: 9.9.4
  * Requires PHP: 7.0
  * Requires Plugins: woocommerce
  **/
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-define( 'VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION', '1.2.4' );
+define( 'VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION', '1.2.5' );
 include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 add_action( 'before_woocommerce_init', function () {
 	if ( class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
