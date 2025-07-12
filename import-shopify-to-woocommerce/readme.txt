@@ -21,7 +21,7 @@ Learn how to get your Shopify API key and password to use with S2W - Import Shop
 [youtube https://youtu.be/1kyEp4d_cfw]
 
 Preview S2W - Import Shopify to WooCommerce
-[youtube https://youtu.be/zbadTXnKNh8]
+[youtube https://youtu.be/v5RMTV0MX80]
 
 ### IMPORTANT NOTICE:
 
@@ -232,6 +232,10 @@ Preview S2W - Import Shopify to WooCommerce
 6. Webhooks
 
 == Changelog ==
+/**1.2.6 - 2025.07.12**/
+- Updated: Compatibility check with WC 9.9.5
+- Updated: Update support file
+
 /**1.2.5 - 2025.06.23**/
 - Updated: Compatibility check with WP 6.8.1 and WC 9.9.4
 - Updated: Update support file

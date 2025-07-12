@@ -1,3 +1,7 @@
+/**1.2.6 - 2025.07.12**/
+- Updated: Compatibility check with WC 9.9.5
+- Updated: Update support file
+
 /**1.2.5 - 2025.06.23**/
 - Updated: Compatibility check with WP 6.8.1 and WC 9.9.4
 - Updated: Update support file
