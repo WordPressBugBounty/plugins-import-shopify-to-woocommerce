@@ -3,7 +3,9 @@ Contributors: villatheme, mrt3vn
 Donate link: https://www.villatheme.com/donate
 Tags: import, migration, SHOPIFY, woocommerce
 Requires at least: 5.0.0
-Tested up to: 6.8.1
+Tested up to: 6.8.2
+WC requires at least: 7.0
+WC tested up to: 10.0.3
 Requires PHP: 7.0
 Stable tag: trunk
 License: GPLv2 or later
@@ -18,7 +20,7 @@ S2W – Import Shopify to WooCommerce helps you migrate data from Shopify to Woo
 >[Try demo](https://new2new.com/?item=s2w "S2W - Import Shopify to WooCommerce") | [Documents](http://docs.villatheme.com/?item=import-shopify-to-woocommerce "Documents")| [Premium version](https://1.envato.market/9arQ5) | [Facebook group](https://www.facebook.com/groups/villatheme "VillaTheme")
 
 Learn how to get your Shopify API key and password to use with S2W - Import Shopify to WooCommerce
-[youtube https://youtu.be/1kyEp4d_cfw]
+[youtube https://youtu.be/fTQ73RyKMp4]
 
 Preview S2W - Import Shopify to WooCommerce
 [youtube https://youtu.be/v5RMTV0MX80]
@@ -232,6 +234,10 @@ Preview S2W - Import Shopify to WooCommerce
 6. Webhooks
 
 == Changelog ==
+/**1.2.7 - 2025.07.26**/
+– Updated: Compatible with WP 6.8.2 and WC 10.0.3
+– Updated: Update support class
+
 /**1.2.6 - 2025.07.12**/
 - Updated: Compatibility check with WC 9.9.5
 - Updated: Update support file
