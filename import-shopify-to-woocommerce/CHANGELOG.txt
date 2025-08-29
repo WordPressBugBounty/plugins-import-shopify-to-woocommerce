@@ -1,3 +1,8 @@
+/**1.2.9 - 2025.08.29**/
+– Updated: Compatible with WC 10.1.2
+- Updated: Shopify API version 2025-07
+– Updated: Update support class
+
 /**1.2.8 - 2025.08.15**/
 – Updated: Compatible with WP 6.8.2 and WC 10.0.4
 – Updated: Update support class
