@@ -3,9 +3,9 @@ Contributors: villatheme, mrt3vn
 Donate link: https://www.villatheme.com/donate
 Tags: import, migration, SHOPIFY, woocommerce
 Requires at least: 5.0.0
-Tested up to: 6.8.2
+Tested up to: 6.9
 WC requires at least: 7.0
-WC tested up to: 10.1.2
+WC tested up to: 10.4
 Requires PHP: 7.0
 Stable tag: trunk
 License: GPLv2 or later
@@ -20,7 +20,7 @@ S2W – Import Shopify to WooCommerce helps you migrate data from Shopify to Woo
 >[Try demo](https://new2new.com/?item=s2w "S2W - Import Shopify to WooCommerce") | [Documents](http://docs.villatheme.com/?item=import-shopify-to-woocommerce "Documents")| [Premium version](https://1.envato.market/9arQ5) | [Facebook group](https://www.facebook.com/groups/villatheme "VillaTheme")
 
 Learn how to get your Shopify API key and password to use with S2W - Import Shopify to WooCommerce
-[youtube https://youtu.be/fTQ73RyKMp4]
+[youtube https://youtu.be/Zu4zi0cCRHU]
 
 Preview S2W - Import Shopify to WooCommerce
 [youtube https://youtu.be/v5RMTV0MX80]
@@ -107,8 +107,6 @@ Preview S2W - Import Shopify to WooCommerce
 
 ### MAY BE YOU NEED
 
-[9MAIL - WordPress Email Templates Designer](https://wordpress.org/plugins/9mail-wp-email-templates-designer/)
-
 [9Map - Map Multi Locations](https://wordpress.org/plugins/9map-map-multi-locations/)
 
 [Abandoned Cart Recovery for WooCommerce](https://wordpress.org/plugins/woo-abandoned-cart-recovery/)
@@ -122,6 +120,8 @@ Preview S2W - Import Shopify to WooCommerce
 [Boost Sales for WooCommerce - Set up Up-Sells & Cross-Sells Popups & Auto Apply Coupon](https://wordpress.org/plugins/woo-boost-sales/)
 
 [Bopo - WooCommerce Product Bundle Builder](https://wordpress.org/plugins/bopo-woo-product-bundle-builder/)
+
+[Bulky - Bulk Edit Products for WooCommerce](https://wordpress.org/plugins/bulky-bulk-edit-products-for-woo/)
 
 [Cart All In One For WooCommerce](https://wordpress.org/plugins/woo-cart-all-in-one/)
 
@@ -139,7 +139,7 @@ Preview S2W - Import Shopify to WooCommerce
 
 [Coupon Box for WooCommerce](https://wordpress.org/plugins/woo-coupon-box/)
 
-[CURCY - Multi Currency for WooCommerce - The best free currency exchange plugin - Run smoothly on WooCommerce 9.x](https://wordpress.org/plugins/woo-multi-currency/)
+[CURCY - Multi Currency for WooCommerce - Smoothly on WooCommerce 9.x](https://wordpress.org/plugins/woo-multi-currency/)
 
 [Customer Coupons for WooCommerce](https://wordpress.org/plugins/woo-customer-coupons/)
 
@@ -154,6 +154,8 @@ Preview S2W - Import Shopify to WooCommerce
 [EU Cookies Bar for WordPress](https://wordpress.org/plugins/eu-cookies-bar/)
 
 [EXMAGE - WordPress Image Links](https://wordpress.org/plugins/exmage-wp-image-links/)
+
+[Faview - Virtual Reviews for WooCommerce](https://wordpress.org/plugins/woo-virtual-reviews/)
 
 [FEWC - Extra Checkout Fields For WooCommerce](https://wordpress.org/plugins/fewc-extra-checkout-fields-for-woocommerce/)
 
@@ -171,6 +173,8 @@ Preview S2W - Import Shopify to WooCommerce
 
 [Lucky Wheel for WooCommerce - Spin a Sale](https://wordpress.org/plugins/woo-lucky-wheel/)
 
+[Lucky Wheel Giveaway](https://wordpress.org/plugins/wp-lucky-wheel/)
+
 [Notification for WooCommerce | Boost Your Sales - Recent Sales Popup - Live Feed Sales - Upsells](https://wordpress.org/plugins/woo-notification/)
 
 [Orders Tracking for WooCommerce](https://wordpress.org/plugins/woo-orders-tracking/)
@@ -179,9 +183,9 @@ Preview S2W - Import Shopify to WooCommerce
 
 [Pofily - WooCommerce Product Filters](https://wordpress.org/plugins/pofily-woo-product-filters/)
 
-[Product Builder for WooCommerce - Custom PC Builder](https://wordpress.org/plugins/woo-product-builder/)
+[PRENA - Product Pre-Orders for WooCommerce](https://wordpress.org/plugins/product-pre-orders-for-woo/)
 
-[Product Pre-Orders for WooCommerce](https://wordpress.org/plugins/product-pre-orders-for-woo/)
+[Product Builder for WooCommerce - Custom PC Builder](https://wordpress.org/plugins/woo-product-builder/)
 
 [Product Size Chart For WooCommerce](https://wordpress.org/plugins/product-size-chart-for-woo/)
 
@@ -190,6 +194,8 @@ Preview S2W - Import Shopify to WooCommerce
 [REDIS - WooCommerce Dynamic Pricing and Discounts](https://wordpress.org/plugins/redis-woo-dynamic-pricing-and-discounts/)
 
 [REES - Real Estate for Woo](https://wordpress.org/plugins/rees-real-estate-for-woo/)
+
+[S2W - Import Shopify to WooCommerce](https://wordpress.org/plugins/import-shopify-to-woocommerce/)
 
 [Sales Countdown Timer](https://wordpress.org/plugins/sales-countdown-timer/)
 
@@ -201,17 +207,20 @@ Preview S2W - Import Shopify to WooCommerce
 
 [TMDS - Dropshipping for TEMU and Woo](https://wordpress.org/plugins/tmds-dropshipping-for-temu-and-woo/)
 
+[VARGAL - Additional Variation Gallery for WooCommerce](https://wordpress.org/plugins/vargal-additional-variation-gallery-for-woo/)
+
+[VillaTheme Core](https://wordpress.org/plugins/villatheme-core/)
+
+[VIMA - Multi Customer Addresses for Woo](https://wordpress.org/plugins/vima-multi-customer-addresses-for-woo/)
+
+[VISeek - Easy Custom Search](https://wordpress.org/plugins/viseek-easy-custom-search/)
+
 [W2S - Migrate WooCommerce to Shopify](https://wordpress.org/plugins/w2s-migrate-woo-to-shopify/)
 
 [WebPOS – Point of Sale for WooCommerce](https://wordpress.org/plugins/webpos-point-of-sale-for-woocommerce/)
 
-[WordPress Lucky Wheel - Spin a Sale](https://wordpress.org/plugins/wp-lucky-wheel/)
-
 [WPBulky - WordPress Bulk Edit Post Types](https://wordpress.org/plugins/wpbulky-wp-bulk-edit-post-types/)
 
-[Bulky - Bulk Edit Products for WooCommerce](https://wordpress.org/plugins/bulky-bulk-edit-products-for-woo/)
-
-[VARGAL - Additional Variation Gallery for Woo](https://wordpress.org/plugins/vargal-additional-variation-gallery-for-woo/)
 
 ### Plugin Links
 - [Report Bugs/Issues](https://villatheme.com/supports)
@@ -234,6 +243,17 @@ Preview S2W - Import Shopify to WooCommerce
 6. Webhooks
 
 == Changelog ==
+/**1.3.2 - 2025.01.20**/
+- Fixed: Get new access token when save setting
+
+/**1.3.1 - 2025.01.20**/
+- Fixed: Settings saving issue
+
+/**1.3.0 - 2025.01.17**/
+- Updated: Support the new Shopify Dev App, adding 2 fields of new required API credentials - Client ID and Secret
+– Updated: Compatible with WP 6.9 and WC 10.4
+– Updated: Update support class
+
 /**1.2.9 - 2025.08.29**/
 – Updated: Compatible with WC 10.1.2
 - Updated: Shopify API version 2025-07

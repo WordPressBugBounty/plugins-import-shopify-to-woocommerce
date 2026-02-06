@@ -368,7 +368,7 @@ class IMPORT_SHOPIFY_TO_WOOCOMMERCE_ADMIN_Error_Images {
 		wp_enqueue_style( 'import-shopify-to-woocommerce-button', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_CSS . 'button.min.css', '', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION );
 		wp_enqueue_style( 'select2', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_CSS . 'select2.min.css','',VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION );
 		if ( woocommerce_version_check( '3.0.0' ) ) {
-			wp_enqueue_script( 'select2' );
+			wp_enqueue_script( 'wc-select2' );
 		} else {
 			wp_enqueue_script( 'select2-v4', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_JS . 'select2.js', array( 'jquery' ), '4.0.3', true );
 		}

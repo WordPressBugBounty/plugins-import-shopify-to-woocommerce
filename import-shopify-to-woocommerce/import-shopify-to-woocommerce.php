@@ -3,24 +3,24 @@
  * Plugin Name: S2W - Import Shopify to WooCommerce
  * Plugin URI: https://villatheme.com/extensions/import-shopify-to-woocommerce
  * Description: Easily migrate all Shopify products and their collections(categories) to WooCommerce after several clicks
- * Version: 1.2.9
+ * Version: 1.3.2
  * Author: VillaTheme
  * Author URI: https://villatheme.com
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: import-shopify-to-woocommerce
  * Domain Path: /languages
- * Copyright 2019-2025 VillaTheme.com. All rights reserved.
- * Tested up to: 6.8.2
+ * Copyright 2019-2026 VillaTheme.com. All rights reserved.
+ * Tested up to: 6.9
  * WC requires at least: 7.0.0
- * WC tested up to: 10.1.2
+ * WC tested up to: 10.4.3
  * Requires PHP: 7.0
  * Requires Plugins: woocommerce
  **/
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-define( 'VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION', '1.2.9' );
+define( 'VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION', '1.3.2' );
 include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 add_action( 'before_woocommerce_init', function () {
 	if ( class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
@@ -107,7 +107,12 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
 					$access_token = $this->settings->get_params( 'access_token' );
 					$api_key      = $this->settings->get_params( 'api_key' );
 					$api_secret   = $this->settings->get_params( 'api_secret' );
-					$new_dir_name = VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_DATA::get_cache_path( $domain, $access_token, $api_key, $api_secret );
+					/*01-01-2026 Instead of creating a custom app, switch to creating an app through the developer console.*/
+					$client_id = $this->settings->get_params( 'client_id' );
+					$secret    = $this->settings->get_params( 'secret' );
+
+
+					$new_dir_name = VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_DATA::get_cache_path( $domain, $access_token, $api_key, $api_secret, $client_id, $secret );
 					if ( $domain && $api_key && $api_secret ) {
 						$shop_name_length = strlen( $domain );
 						foreach ( $dirs as $dir ) {
@@ -175,7 +180,10 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
 					$access_token = $this->settings->get_params( 'access_token' );
 					$api_key      = $this->settings->get_params( 'api_key' );
 					$api_secret   = $this->settings->get_params( 'api_secret' );
-					$path         = VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_DATA::get_cache_path( $domain, $access_token, $api_key, $api_secret );
+					/*01-01-2026 Instead of creating a custom app, switch to creating an app through the developer console.*/
+					$client_id = $this->settings->get_params( 'client_id' );
+					$secret    = $this->settings->get_params( 'secret' );
+					$path         = VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_DATA::get_cache_path( $domain, $access_token, $api_key, $api_secret, $client_id, $secret  );
 					if ( isset( $_POST['products'] ) && sanitize_text_field( $_POST['products'] ) ) {//phpcs:ignore WordPress.Security.NonceVerification.Missing
 						VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_DATA::delete_option( 's2w_' . $this->settings->get_params( 'domain' ) . '_history' );
 						$files = glob( $path . '/page_*.txt' );
@@ -543,10 +551,18 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
 				return;
 			}
 			add_filter( 'http_request_timeout', array( $this, 'bump_request_timeout' ) );
-			$domain                  = isset( $_POST['domain'] ) ? sanitize_text_field( $_POST['domain'] ) : '';
-			$access_token            = isset( $_POST['access_token'] ) ? sanitize_text_field( $_POST['access_token'] ) : '';
-			$api_key                 = isset( $_POST['api_key'] ) ? sanitize_text_field( $_POST['api_key'] ) : '';
-			$api_secret              = isset( $_POST['api_secret'] ) ? sanitize_text_field( $_POST['api_secret'] ) : '';
+
+			$domain = isset( $_POST['domain'] ) ? sanitize_text_field( $_POST['domain'] ) : '';
+
+			$access_token = isset( $_POST['access_token'] ) ? sanitize_text_field( $_POST['access_token'] ) : '';
+
+			$api_key    = isset( $_POST['api_key'] ) ? sanitize_text_field( $_POST['api_key'] ) : '';
+			$api_secret = isset( $_POST['api_secret'] ) ? sanitize_text_field( $_POST['api_secret'] ) : '';
+
+			/*01-01-2026 Instead of creating a custom app, switch to creating an app through the developer console.*/
+			$client_id = isset( $_POST['client_id'] ) ? sanitize_text_field( $_POST['client_id'] ) : '';
+			$secret    = isset( $_POST['secret'] ) ? sanitize_text_field( $_POST['secret'] ) : '';
+
 			$download_images         = isset( $_POST['download_images'] ) ? sanitize_text_field( $_POST['download_images'] ) : '';
 			$product_status          = isset( $_POST['product_status'] ) ? sanitize_text_field( $_POST['product_status'] ) : 'publish';
 			$product_categories      = isset( $_POST['product_categories'] ) ? array_map( 'sanitize_text_field', $_POST['product_categories'] ) : array();
@@ -554,7 +570,7 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
 			$products_per_request    = isset( $_POST['products_per_request'] ) ? sanitize_text_field( $_POST['products_per_request'] ) : '5';
 			$product_import_sequence = isset( $_POST['product_import_sequence'] ) ? sanitize_text_field( $_POST['product_import_sequence'] ) : '';
 
-			$path                   = VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_DATA::get_cache_path( $domain, $access_token, $api_key, $api_secret ) . '/';
+			$path                   = VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_DATA::get_cache_path( $domain, $access_token, $api_key, $api_secret , $client_id, $secret) . '/';
 			$history_product_option = 's2w_' . $domain . '_history';
 			$history                = VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_DATA::get_option( $history_product_option, array(
 				'total_products'         => 0,
@@ -572,6 +588,8 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
 				'access_token'               => $access_token,
 				'api_key'                    => $api_key,
 				'api_secret'                 => $api_secret,
+				'client_id'                  => $client_id,
+				'secret'                     => $secret,
 				'download_images'            => $download_images,
 				'disable_background_process' => isset( $_POST['disable_background_process'] ) ? sanitize_text_field( $_POST['disable_background_process'] ) : '',
 				'product_categories'         => $product_categories,
@@ -592,19 +610,24 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
 			$old_api_key      = $this->settings->get_params( 'api_key' );
 			$old_api_secret   = $this->settings->get_params( 'api_secret' );
 			if ( $domain ) {
-				if ( $access_token ) {
-					if ( ! $args['validate'] || $domain != $old_domain || $access_token != $old_access_token ) {
-						$request = VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_DATA::get_access_scopes( $domain, $access_token, $api_key, $api_secret );
-						if ( $request['status'] === 'success' ) {
+				if ( $client_id ) {
+					if ( ! $args['validate'] || $domain != $old_domain || $access_token != $old_access_token || (!empty($client_id) && !empty($secret)) ) {
+						$request = VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_DATA::get_access_scopes( $domain, $access_token, $api_key, $api_secret, $client_id, $secret );
+
+                        if ( $request['status'] === 'success' ) {
 							$args['validate'] = 1;
+							$request_data     = $request['data'] ?? [];
+							if ( isset( $request_data['access_token'] ) ) {
+								$args['render_access_token'] = $request_data['access_token'];
+							}
 						} else {
 							$api_error        = $request['data'];
 							$args['validate'] = '';
 						}
 					}
 				} else {
-					if ( $api_key && $api_secret ) {
-						if ( ! $args['validate'] || $domain != $old_domain || $api_key != $old_api_key || $api_secret != $old_api_secret ) {
+					if ( $access_token ) {
+						if ( ! $args['validate'] || $domain != $old_domain || $access_token != $old_access_token ) {
 							$request = VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_DATA::get_access_scopes( $domain, $access_token, $api_key, $api_secret );
 							if ( $request['status'] === 'success' ) {
 								$args['validate'] = 1;
@@ -614,7 +637,19 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
 							}
 						}
 					} else {
-						$args['validate'] = '';
+						if ( $api_key && $api_secret ) {
+							if ( ! $args['validate'] || $domain != $old_domain || $api_key != $old_api_key || $api_secret != $old_api_secret ) {
+								$request = VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_DATA::get_access_scopes( $domain, $access_token, $api_key, $api_secret );
+								if ( $request['status'] === 'success' ) {
+									$args['validate'] = 1;
+								} else {
+									$api_error        = $request['data'];
+									$args['validate'] = '';
+								}
+							}
+						} else {
+							$args['validate'] = '';
+						}
 					}
 				}
 			} else {
@@ -623,7 +658,7 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
 
 			if ( $args['product_import_sequence'] != $this->settings->get_params( 'product_import_sequence' ) ) {
 				VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_DATA::delete_option( 's2w_' . $domain . '_history' );
-				$product_files = glob( VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_DATA::get_cache_path( $domain, $access_token, $api_key, $api_secret ) . '/page_*.txt' );
+				$product_files = glob( VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_DATA::get_cache_path( $domain, $access_token, $api_key, $api_secret, $client_id, $secret ) . '/page_*.txt' );
 				VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_DATA::delete_files( $product_files );
 				$history = array(
 					'total_products'         => 0,
@@ -673,16 +708,21 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
 			if ( ! wp_verify_nonce( $_s2w_nonce, 's2w_action_nonce' ) ) {
 				return;
 			}
-			$domain                  = $this->settings->get_params( 'domain' );
-			$access_token            = $this->settings->get_params( 'access_token' );
-			$api_key                 = $this->settings->get_params( 'api_key' );
-			$api_secret              = $this->settings->get_params( 'api_secret' );
+			$domain       = $this->settings->get_params( 'domain' );
+			$access_token = $this->settings->get_params( 'access_token' );
+			$api_key      = $this->settings->get_params( 'api_key' );
+			$api_secret   = $this->settings->get_params( 'api_secret' );
+			/*01-01-2026 Instead of creating a custom app, switch to creating an app through the developer console.*/
+			$client_id = $this->settings->get_params( 'client_id' );
+			$secret    = $this->settings->get_params( 'secret' );
+
 			$download_images         = isset( $_POST['download_images'] ) ? sanitize_text_field( $_POST['download_images'] ) : '';
 			$product_status          = isset( $_POST['product_status'] ) ? sanitize_text_field( $_POST['product_status'] ) : 'publish';
 			$product_categories      = isset( $_POST['product_categories'] ) ? array_map( 'sanitize_text_field', $_POST['product_categories'] ) : array();
 			$products_per_request    = isset( $_POST['products_per_request'] ) ? sanitize_text_field( $_POST['products_per_request'] ) : '5';
 			$product_import_sequence = isset( $_POST['product_import_sequence'] ) ? sanitize_text_field( $_POST['product_import_sequence'] ) : '';
-			$path                    = VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_DATA::get_cache_path( $domain, $access_token, $api_key, $api_secret ) . '/';
+            
+			$path                    = VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_DATA::get_cache_path( $domain, $access_token, $api_key, $api_secret, $client_id, $secret ) . '/';
 			$history_product_option  = 's2w_' . $domain . '_history';
 			$history                 = VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_DATA::get_option( $history_product_option, array(
 				'total_products'         => 0,
@@ -709,7 +749,7 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
 			foreach ( $product_import_options as $product_import_option ) {
 				if ( $args[ $product_import_option ] != $this->settings->get_params( $product_import_option ) ) {
 					VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_DATA::delete_option( 's2w_' . $domain . '_history' );
-					$product_files = glob( VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_DATA::get_cache_path( $domain, $access_token, $api_key, $api_secret ) . '/page_*.txt' );
+					$product_files = glob( VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_DATA::get_cache_path( $domain, $access_token, $api_key, $api_secret, $client_id, $secret ) . '/page_*.txt' );
 					VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_DATA::delete_files( $product_files );
 					$history = array(
 						'total_products'         => 0,
@@ -779,11 +819,23 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
 			$access_token               = $this->settings->get_params( 'access_token' );
 			$api_key                    = $this->settings->get_params( 'api_key' );
 			$api_secret                 = $this->settings->get_params( 'api_secret' );
+			/*01-01-2026 Instead of creating a custom app, switch to creating an app through the developer console.*/
+			$client_id = $this->settings->get_params( 'client_id' );
+			$secret    = $this->settings->get_params( 'secret' );
+			if ( ! empty( $client_id ) && ! empty( $secret ) ) {
+				$request_scoped = VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_DATA::get_access_scopes( $domain, $access_token, $api_key, $api_secret, $client_id, $secret );
+				$data_request   = $request_scoped['data'] ?? [];
+				if ( isset( $data_request['access_token'] ) ) {
+					$access_token = $data_request['access_token'];
+					VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_DATA::update_new_access_token( $access_token );
+				}
+			}
+
 			$download_images            = $this->settings->get_params( 'download_images' );
 			$disable_background_process = $this->settings->get_params( 'disable_background_process' );
 			$product_status             = $this->settings->get_params( 'product_status' );
 			$product_categories         = $this->settings->get_params( 'product_categories' );
-			$path                       = VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_DATA::get_cache_path( $domain, $access_token, $api_key, $api_secret ) . '/';
+			$path                       = VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_DATA::get_cache_path( $domain, $access_token, $api_key, $api_secret, $client_id, $secret ) . '/';
 			VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_DATA::create_cache_folder( $path );
 			$step      = isset( $_POST['step'] ) ? sanitize_text_field( $_POST['step'] ) : '';
 			$error_log = isset( $_POST['error_log'] ) ? wp_kses_post( $_POST['error_log'] ) : '';
@@ -941,18 +993,18 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
 																	'_price'              => $regular_price,
 																)
 															);
-//															if ( $manage_stock ) {
-//																$data['meta_input']['_manage_stock'] = 'yes';
-//																if ( $variations[0]['inventory_quantity'] ) {
-//																	$data['meta_input']['_stock']        = $variations[0]['inventory_quantity'];
-//																	$data['meta_input']['_stock_status'] = 'instock';
-//																} else {
-//																	$data['meta_input']['_stock_status'] = 'outofstock';
-//																}
-//															} else {
-//																$data['meta_input']['_manage_stock'] = 'no';
-//																$data['meta_input']['_stock_status'] = 'instock';
-//															}
+															//															if ( $manage_stock ) {
+															//																$data['meta_input']['_manage_stock'] = 'yes';
+															//																if ( $variations[0]['inventory_quantity'] ) {
+															//																	$data['meta_input']['_stock']        = $variations[0]['inventory_quantity'];
+															//																	$data['meta_input']['_stock_status'] = 'instock';
+															//																} else {
+															//																	$data['meta_input']['_stock_status'] = 'outofstock';
+															//																}
+															//															} else {
+															//																$data['meta_input']['_manage_stock'] = 'no';
+															//																$data['meta_input']['_stock_status'] = 'instock';
+															//															}
 															if ( $variations[0]['weight'] ) {
 																$data['meta_input']['_weight'] = $variations[0]['weight'];
 															}
@@ -984,9 +1036,9 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
 																	}
 																}
 																wp_set_object_terms( $product_id, 'simple', 'product_type' );
-//																if ( ! empty( $product['product_type'] ) ) {
-//																	wp_set_object_terms( $product_id, $product['product_type'], 'product_cat', true );
-//																}
+																//																if ( ! empty( $product['product_type'] ) ) {
+																//																	wp_set_object_terms( $product_id, $product['product_type'], 'product_cat', true );
+																//																}
 																if ( is_array( $product_categories ) && count( $product_categories ) ) {
 																	wp_set_post_terms( $product_id, $product_categories, 'product_cat', true );
 																}
@@ -1080,9 +1132,9 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
 																		update_post_meta( $product_id, '_thumbnail_id', $placeholder_image_id );
 																	}
 																}
-//																if ( ! empty( $product['product_type'] ) ) {
-//																	wp_set_object_terms( $product_id, $product['product_type'], 'product_cat', true );
-//																}
+																//																if ( ! empty( $product['product_type'] ) ) {
+																//																	wp_set_object_terms( $product_id, $product['product_type'], 'product_cat', true );
+																//																}
 																if ( is_array( $product_categories ) && count( $product_categories ) ) {
 																	wp_set_post_terms( $product_id, $product_categories, 'product_cat', true );
 																}
@@ -1113,18 +1165,18 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
 																			'sku'           => VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_DATA::sku_exists( $variation['sku'] ) ? '' : $variation['sku'],
 																			'regular_price' => $regular_price,
 																		);
-//																		if ( $manage_stock ) {
-//																			$fields['stock_quantity'] = $variation['inventory_quantity'];
-//																			$fields['manage_stock']   = 'yes';
-//																			if ( $variation['inventory_quantity'] ) {
-//																				$fields['stock_status'] = 'instock';
-//																			} else {
-//																				$fields['stock_status'] = 'outofstock';
-//																			}
-//																		} else {
-//																			$fields['manage_stock'] = 'no';
-//																			$fields['stock_status'] = 'instock';
-//																		}
+																		//																		if ( $manage_stock ) {
+																		//																			$fields['stock_quantity'] = $variation['inventory_quantity'];
+																		//																			$fields['manage_stock']   = 'yes';
+																		//																			if ( $variation['inventory_quantity'] ) {
+																		//																				$fields['stock_status'] = 'instock';
+																		//																			} else {
+																		//																				$fields['stock_status'] = 'outofstock';
+																		//																			}
+																		//																		} else {
+																		//																			$fields['manage_stock'] = 'no';
+																		//																			$fields['stock_status'] = 'instock';
+																		//																		}
 																		if ( $manage_stock ) {
 																			$variation_obj->set_manage_stock( 'yes' );
 																			$variation_obj->set_stock_quantity( $variation['inventory_quantity'] );
@@ -1202,18 +1254,18 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
 																	'_price'              => $regular_price,
 																)
 															);
-//															if ( $manage_stock ) {
-//																$data['meta_input']['_manage_stock'] = 'yes';
-//																if ( $variations[0]['inventory_quantity'] ) {
-//																	$data['meta_input']['_stock']        = $variations[0]['inventory_quantity'];
-//																	$data['meta_input']['_stock_status'] = 'instock';
-//																} else {
-//																	$data['meta_input']['_stock_status'] = 'outofstock';
-//																}
-//															} else {
-//																$data['meta_input']['_manage_stock'] = 'no';
-//																$data['meta_input']['_stock_status'] = 'instock';
-//															}
+															//															if ( $manage_stock ) {
+															//																$data['meta_input']['_manage_stock'] = 'yes';
+															//																if ( $variations[0]['inventory_quantity'] ) {
+															//																	$data['meta_input']['_stock']        = $variations[0]['inventory_quantity'];
+															//																	$data['meta_input']['_stock_status'] = 'instock';
+															//																} else {
+															//																	$data['meta_input']['_stock_status'] = 'outofstock';
+															//																}
+															//															} else {
+															//																$data['meta_input']['_manage_stock'] = 'no';
+															//																$data['meta_input']['_stock_status'] = 'instock';
+															//															}
 															if ( $variations[0]['weight'] ) {
 																$data['meta_input']['_weight'] = $variations[0]['weight'];
 															}
@@ -1226,9 +1278,9 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
 															if ( ! is_wp_error( $product_id ) ) {
 																$log['woo_id'] = $product_id;
 																wp_set_object_terms( $product_id, 'simple', 'product_type' );
-//																if ( ! empty( $product['product_type'] ) ) {
-//																	wp_set_object_terms( $product_id, $product['product_type'], 'product_cat', true );
-//																}
+																//																if ( ! empty( $product['product_type'] ) ) {
+																//																	wp_set_object_terms( $product_id, $product['product_type'], 'product_cat', true );
+																//																}
 																if ( is_array( $product_categories ) && count( $product_categories ) ) {
 																	wp_set_post_terms( $product_id, $product_categories, 'product_cat', true );
 																}
@@ -1290,9 +1342,9 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
 																	}
 																}
 																$log['woo_id'] = $product_id;
-//																if ( ! empty( $product['product_type'] ) ) {
-//																	wp_set_object_terms( $product_id, $product['product_type'], 'product_cat', true );
-//																}
+																//																if ( ! empty( $product['product_type'] ) ) {
+																//																	wp_set_object_terms( $product_id, $product['product_type'], 'product_cat', true );
+																//																}
 																if ( is_array( $product_categories ) && count( $product_categories ) ) {
 																	wp_set_post_terms( $product_id, $product_categories, 'product_cat', true );
 																}
@@ -1323,18 +1375,18 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
 																			'sku'           => VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_DATA::sku_exists( $variation['sku'] ) ? '' : $variation['sku'],
 																			'regular_price' => $regular_price,
 																		);
-//																		if ( $manage_stock ) {
-//																			$fields['stock_quantity'] = $variation['inventory_quantity'];
-//																			$fields['manage_stock']   = 'yes';
-//																			if ( $variation['inventory_quantity'] ) {
-//																				$fields['stock_status'] = 'instock';
-//																			} else {
-//																				$fields['stock_status'] = 'outofstock';
-//																			}
-//																		} else {
-//																			$fields['manage_stock'] = 'no';
-//																			$fields['stock_status'] = 'instock';
-//																		}
+																		//																		if ( $manage_stock ) {
+																		//																			$fields['stock_quantity'] = $variation['inventory_quantity'];
+																		//																			$fields['manage_stock']   = 'yes';
+																		//																			if ( $variation['inventory_quantity'] ) {
+																		//																				$fields['stock_status'] = 'instock';
+																		//																			} else {
+																		//																				$fields['stock_status'] = 'outofstock';
+																		//																			}
+																		//																		} else {
+																		//																			$fields['manage_stock'] = 'no';
+																		//																			$fields['stock_status'] = 'instock';
+																		//																		}
 																		if ( $manage_stock ) {
 																			$variation_obj->set_manage_stock( 'yes' );
 																			$variation_obj->set_stock_quantity( $variation['inventory_quantity'] );
@@ -1371,9 +1423,9 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
 													update_post_meta( $product_id, '_shopify_product_id', $current_import_id );
 													$log['woo_id'] = $product_id;
 													wp_set_object_terms( $product_id, 'variable', 'product_type' );
-//													if ( ! empty( $product['product_type'] ) ) {
-//														wp_set_object_terms( $product_id, $product['product_type'], 'product_cat', true );
-//													}
+													//													if ( ! empty( $product['product_type'] ) ) {
+													//														wp_set_object_terms( $product_id, $product['product_type'], 'product_cat', true );
+													//													}
 													if ( is_array( $product_categories ) && count( $product_categories ) ) {
 														wp_set_post_terms( $product_id, $product_categories, 'product_cat', true );
 													}
@@ -1400,9 +1452,9 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
 																$images_d[0]['set_gallery']   = 0;
 															}
 															wp_set_object_terms( $product_id, 'variable', 'product_type' );
-//															if ( ! empty( $product['product_type'] ) ) {
-//																wp_set_object_terms( $product_id, $product['product_type'], 'product_cat', true );
-//															}
+															//															if ( ! empty( $product['product_type'] ) ) {
+															//																wp_set_object_terms( $product_id, $product['product_type'], 'product_cat', true );
+															//															}
 															if ( is_array( $product_categories ) && count( $product_categories ) ) {
 																wp_set_post_terms( $product_id, $product_categories, 'product_cat', true );
 															}
@@ -1439,18 +1491,18 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
 																	'sku'           => VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_DATA::sku_exists( $variation['sku'] ) ? '' : $variation['sku'],
 																	'regular_price' => $regular_price,
 																);
-//																if ( $manage_stock ) {
-//																	$fields['stock_quantity'] = $variation['inventory_quantity'];
-//																	$fields['manage_stock']   = 'yes';
-//																	if ( $variation['inventory_quantity'] ) {
-//																		$fields['stock_status'] = 'instock';
-//																	} else {
-//																		$fields['stock_status'] = 'outofstock';
-//																	}
-//																} else {
-//																	$fields['manage_stock'] = 'no';
-//																	$fields['stock_status'] = 'instock';
-//																}
+																//																if ( $manage_stock ) {
+																//																	$fields['stock_quantity'] = $variation['inventory_quantity'];
+																//																	$fields['manage_stock']   = 'yes';
+																//																	if ( $variation['inventory_quantity'] ) {
+																//																		$fields['stock_status'] = 'instock';
+																//																	} else {
+																//																		$fields['stock_status'] = 'outofstock';
+																//																	}
+																//																} else {
+																//																	$fields['manage_stock'] = 'no';
+																//																	$fields['stock_status'] = 'instock';
+																//																}
 																if ( $manage_stock ) {
 																	$variation_obj->set_manage_stock( 'yes' );
 																	$variation_obj->set_stock_quantity( $variation['inventory_quantity'] );
@@ -1530,18 +1582,18 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
 																		'sku'           => VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_DATA::sku_exists( $variation['sku'] ) ? '' : $variation['sku'],
 																		'regular_price' => $regular_price,
 																	);
-//																	if ( $manage_stock ) {
-//																		$fields['stock_quantity'] = $variation['inventory_quantity'];
-//																		$fields['manage_stock']   = 'yes';
-//																		if ( $variation['inventory_quantity'] ) {
-//																			$fields['stock_status'] = 'instock';
-//																		} else {
-//																			$fields['stock_status'] = 'outofstock';
-//																		}
-//																	} else {
-//																		$fields['manage_stock'] = 'no';
-//																		$fields['stock_status'] = 'instock';
-//																	}
+																	//																	if ( $manage_stock ) {
+																	//																		$fields['stock_quantity'] = $variation['inventory_quantity'];
+																	//																		$fields['manage_stock']   = 'yes';
+																	//																		if ( $variation['inventory_quantity'] ) {
+																	//																			$fields['stock_status'] = 'instock';
+																	//																		} else {
+																	//																			$fields['stock_status'] = 'outofstock';
+																	//																		}
+																	//																	} else {
+																	//																		$fields['manage_stock'] = 'no';
+																	//																		$fields['stock_status'] = 'instock';
+																	//																	}
 																	if ( $manage_stock ) {
 																		$variation_obj->set_manage_stock( 'yes' );
 																		$variation_obj->set_stock_quantity( $variation['inventory_quantity'] );
@@ -1920,6 +1972,8 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
 					'warning_empty_access_token' => esc_html__( 'Access token cannot be empty!', 'import-shopify-to-woocommerce' ),
 					'warning_empty_api_key'      => esc_html__( 'API key can not be empty!', 'import-shopify-to-woocommerce' ),
 					'warning_empty_api_secret'   => esc_html__( 'API secret can not be empty!', 'import-shopify-to-woocommerce' ),
+					'warning_empty_client_id'    => esc_html__( 'API Client ID cannot be empty! ', 'import-shopify-to-woocommerce' ),
+					'warning_empty_secret'       => esc_html__( 'API Secret cannot be empty! ', 'import-shopify-to-woocommerce' ),
 					'error_connection'           => esc_html__( 'Can not connect to your Shopify store. Please check your info.', 'import-shopify-to-woocommerce' ),
 					'error_assign_categories'    => esc_html__( 'Error assigning product categories', 'import-shopify-to-woocommerce' ),
 					'message_checking'           => esc_html__( 'Checking, please wait ...', 'import-shopify-to-woocommerce' ),
@@ -2039,6 +2093,39 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
                                                    id="<?php echo esc_attr( self::set( 'domain' ) ) ?>"
                                                    value="<?php echo esc_attr( htmlentities( $this->settings->get_params( 'domain' ) ) ) ?>">
                                             <label for="<?php echo esc_attr( self::set( 'domain' ) ) ?>"><?php echo wp_kses_post( 'Your Store address, eg: <strong>myshop.myshopify.com</strong>' ) ?></label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <label for="<?php echo esc_attr( self::set( 'client_id' ) ) ?>"><?php esc_html_e( 'Client ID', 'import-shopify-to-woocommerce' ) ?></label>
+                                        </th>
+                                        <td>
+                                            <input type="text"
+                                                   name="<?php echo esc_attr( self::set( 'client_id', true ) ) ?>"
+                                                   id="<?php echo esc_attr( self::set( 'client_id' ) ) ?>"
+                                                   value="<?php echo esc_attr( htmlentities( $this->settings->get_params( 'client_id' ) ) ) ?>">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <label for="<?php echo esc_attr( self::set( 'secret' ) ) ?>"><?php esc_html_e( 'Secret', 'import-shopify-to-woocommerce' ) ?></label>
+                                        </th>
+                                        <td>
+                                            <input type="text"
+                                                   name="<?php echo esc_attr( self::set( 'secret', true ) ) ?>"
+                                                   id="<?php echo esc_attr( self::set( 'secret' ) ) ?>"
+                                                   value="<?php echo esc_attr( htmlentities( $this->settings->get_params( 'secret' ) ) ) ?>">
+                                            <input type="hidden"
+                                                   name="<?php echo esc_attr( self::set( 'render_access_token', true ) ) ?>"
+                                                   id="<?php echo esc_attr( self::set( 'render_access_token' ) ) ?>"
+                                                   value="<?php echo esc_attr( htmlentities( $this->settings->get_params( 'render_access_token' ) ) ) ?>">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <div class="vi-ui positive small message">
+                                                <p class="description"><?php esc_html_e( 'Starting January 1, 2026, you will not be able to create new legacy custom apps. This will not impact any existing apps.', 'import-shopify-to-woocommerce' ) ?></p>
+                                            </div>
                                         </td>
                                     </tr>
                                     <tr>

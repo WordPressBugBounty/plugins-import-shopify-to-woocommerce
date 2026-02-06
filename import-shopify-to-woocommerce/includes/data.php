@@ -4,11 +4,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_DATA {
-	private $params;
-	private $default;
-	private static $prefix;
-	protected $my_options;
-	protected static $instance = null;
+	private          $params;
+	private          $default;
+	private static   $prefix;
+	protected        $my_options;
+	protected static $instance   = null;
 	protected static $allow_html = null;
 
 	/**
@@ -23,7 +23,13 @@ class VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_DATA {
 		}
 		$this->default = array(
 			'domain'                          => '',
+			/*01-01-2026 Instead of creating a custom app, switch to creating an app through the developer console.*/
+			'client_id'                       => '',
+			'secret'                          => '',
+			'render_access_token'             => '',
+			/*access_token is for custom apps*/
 			'access_token'                    => '',
+			/*api_key and api_secret are for private apps which are deprecated and can't be created as of January 2022*/
 			'api_key'                         => '',
 			'api_secret'                      => '',
 			'download_images'                 => '1',
@@ -181,11 +187,15 @@ Deny from all
 		}
 	}
 
-	public static function get_cache_path( $domain, $access_token, $api_key, $api_secret ) {
-		if ( $access_token ) {
-			return VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_CACHE . md5( $access_token ) . '_' . md5( $domain ) . '_' . $domain;
+	public static function get_cache_path( $domain, $access_token, $api_key, $api_secret, $client_id = '', $secret = '' ) {
+		if ( $client_id ) {
+			return VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_CACHE . md5( $domain ) . '_' . $domain;
 		} else {
-			return VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_CACHE . md5( $api_key ) . '_' . md5( $api_secret ) . '_' . $domain;
+			if ( $access_token ) {
+				return VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_CACHE . md5( $access_token ) . '_' . md5( $domain ) . '_' . $domain;
+			} else {
+				return VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_CACHE . md5( $api_key ) . '_' . md5( $api_secret ) . '_' . $domain;
+			}
 		}
 	}
 
@@ -308,22 +318,46 @@ Deny from all
 		return $args;
 	}
 
-	public static function get_access_scopes( $domain, $access_token, $api_key, $api_secret ) {
-		if ( $access_token ) {
-			$url     = "https://{$domain}/admin/oauth/access_scopes.json";
-			$headers = array( 'X-Shopify-Access-Token' => $access_token );
+	public static function get_access_scopes( $domain, $access_token, $api_key, $api_secret, $client_id = '', $secret = '' ) {
+		if ( ! empty( $client_id ) && ! empty( $secret ) ) {
+			$url     = "https://{$domain}//admin/oauth/access_token";
+			$headers = array(
+				'Content-Type' => 'application/x-www-form-urlencoded',
+				'User-Agent'   => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120 Safari/537.36',
+				'Accept'       => 'application/json',
+
+			);
+			$body    = array(
+				'grant_type'    => 'client_credentials',
+				'client_id'     => $client_id,
+				'client_secret' => $secret
+			);
+			$request = wp_remote_post(
+				$url, array(
+					'timeout' => 10,
+					'headers' => $headers,
+					'body'    => $body,
+				)
+			);
 		} else {
-			$url     = "https://{$api_key}:{$api_secret}@{$domain}/admin/oauth/access_scopes.json";
-			$headers = array( 'Authorization' => 'Basic ' . base64_encode( $api_key . ':' . $api_secret ) );
+			if ( $access_token ) {
+				$url     = "https://{$domain}/admin/oauth/access_scopes.json";
+				$headers = array( 'X-Shopify-Access-Token' => $access_token );
+			} else {
+				$url     = "https://{$api_key}:{$api_secret}@{$domain}/admin/oauth/access_scopes.json";
+				$headers = array( 'Authorization' => 'Basic ' . base64_encode( $api_key . ':' . $api_secret ) );
+			}
+			$request = wp_remote_get(
+				$url, array(
+					'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36',
+					'timeout'    => 10,
+					'headers'    => $headers,
+				)
+			);
 		}
-		$request = wp_remote_get(
-			$url, array(
-				'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36',
-				'timeout'    => 10,
-				'headers'    => $headers,
-			)
-		);
-		$return  = array(
+
+
+		$return = array(
 			'status' => 'error',
 			'data'   => '',
 			'code'   => '',
@@ -337,7 +371,11 @@ Deny from all
 				$return['data'] = $body['errors'];
 			} else {
 				$return['status'] = 'success';
-				$return['data']   = $body['access_scopes'];
+				if ( ! empty( $client_id ) && ! empty( $secret ) ) {
+					$return['data'] = $body;
+				} else {
+					$return['data'] = $body['access_scopes'];
+				}
 			}
 		} else {
 			$return['data'] = $request->get_error_message();
@@ -545,5 +583,20 @@ Deny from all
 			'manage_options',
 			'manage_woocommerce'
 		);
+	}
+	/**
+	 * Update new access token
+	 *
+	 * @param $render_access_token
+	 *
+	 * @return void
+	 */
+	public static function update_new_access_token( $render_access_token ) {
+		if ( empty( $render_access_token ) ) {
+			return;
+		}
+		$current_option                        = get_option( 's2w_params' );
+		$current_option['render_access_token'] = $render_access_token;
+		update_option( 's2w_params', $current_option );
 	}
 }

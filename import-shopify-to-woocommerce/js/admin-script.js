@@ -152,6 +152,8 @@ jQuery(document).ready(function ($) {
         elements_titles = s2w_params_admin.elements_titles,
         _s2w_nonce = $('#_s2w_nonce').val(),
         domain = $('#s2w-domain').val(),
+        client_id = $('#s2w-client_id').val(),
+        secret = $('#s2w-secret').val(),
         access_token = $('#s2w-access_token').val(),
         api_key = $('#s2w-api_key').val(),
         api_secret = $('#s2w-api_secret').val(),
@@ -168,30 +170,79 @@ jQuery(document).ready(function ($) {
     let warning_empty_store = s2w_params_admin.warning_empty_store,
         warning_empty_access_token = s2w_params_admin.warning_empty_access_token,
         warning_empty_api_key = s2w_params_admin.warning_empty_api_key,
+        warning_empty_client_id = s2w_params_admin.warning_empty_client_id,
+        warning_empty_secret = s2w_params_admin.warning_empty_secret,
         warning_empty_api_secret = s2w_params_admin.warning_empty_api_secret;
 
     function s2w_validate_data() {
         warning = '';
         let validate = true;
-        if (!$('#s2w-domain').val()) {
+
+        if (!s2w_params_admin.validate_api) {
+            return true;
+        }
+
+        const domain      = $('#s2w-domain').val().trim();
+        const accessToken = $('#s2w-access_token').val().trim();
+        const clientId    = $('#s2w-client_id').val().trim();
+        const secret      = $('#s2w-secret').val().trim();
+        const apiKey      = $('#s2w-api_key').val().trim();
+        const apiSecret   = $('#s2w-api_secret').val().trim();
+
+        /* Check domain */
+        if (!domain) {
             validate = false;
             warning += warning_empty_store;
         }
-        if (!$('#s2w-access_token').val()) {
-            if (!$('#s2w-api_key').val() && !$('#s2w-api_secret').val()) {
-                validate = false;
-                warning += warning_empty_access_token;
-            } else {
-                if (!$('#s2w-api_key').val()) {
-                    validate = false;
-                    warning += warning_empty_api_key;
-                }
-                if (!$('#s2w-api_secret').val()) {
-                    validate = false;
-                    warning += warning_empty_api_secret;
-                }
-            }
+
+
+        const usingAccessToken = !!accessToken;
+        const usingClientAuth  = !!clientId || !!secret;
+        const usingApiAuth     = !!apiKey || !!apiSecret;
+
+        /*All empty */
+        if (!usingAccessToken && !usingClientAuth && !usingApiAuth) {
+            validate = false;
+            warning += warning_empty_access_token;
+            warning += warning_empty_client_id;
+            warning += warning_empty_api_key;
+            return validate;
         }
+
+        /*Validate Group */
+
+        //Access Token
+        if (usingAccessToken) {
+            // Only access_token → OK
+            return validate;
+        }
+
+        //Client ID / Secret
+        if (usingClientAuth) {
+            if (!clientId) {
+                validate = false;
+                warning += warning_empty_client_id;
+            }
+            if (!secret) {
+                validate = false;
+                warning += warning_empty_secret;
+            }
+            return validate;
+        }
+
+        // API Key / Secret
+        if (usingApiAuth) {
+            if (!apiKey) {
+                validate = false;
+                warning += warning_empty_api_key;
+            }
+            if (!apiSecret) {
+                validate = false;
+                warning += warning_empty_api_secret;
+            }
+            return validate;
+        }
+
         return validate;
     }
 
@@ -239,6 +290,8 @@ jQuery(document).ready(function ($) {
         product_categories = $('#s2w-product_categories').val();
         _s2w_nonce = $('#_s2w_nonce').val();
         domain = $('#s2w-domain').val();
+        client_id = $('#s2w-client_id').val();
+        secret = $('#s2w-secret').val();
         access_token = $('#s2w-access_token').val();
         api_key = $('#s2w-api_key').val();
         api_secret = $('#s2w-api_secret').val();
@@ -258,6 +311,8 @@ jQuery(document).ready(function ($) {
                 _s2w_nonce: _s2w_nonce,
                 step: 'save',
                 domain: domain,
+                client_id: client_id,
+                secret: secret,
                 access_token: access_token,
                 api_key: api_key,
                 api_secret: api_secret,
