@@ -3,7 +3,7 @@
  * Plugin Name: S2W - Import Shopify to WooCommerce
  * Plugin URI: https://villatheme.com/extensions/import-shopify-to-woocommerce
  * Description: Easily migrate all Shopify products and their collections(categories) to WooCommerce after several clicks
- * Version: 1.3.2
+ * Version: 1.3.3
  * Author: VillaTheme
  * Author URI: https://villatheme.com
  * License:           GPL v2 or later
@@ -13,14 +13,14 @@
  * Copyright 2019-2026 VillaTheme.com. All rights reserved.
  * Tested up to: 6.9
  * WC requires at least: 7.0.0
- * WC tested up to: 10.4.3
+ * WC tested up to: 10.5
  * Requires PHP: 7.0
  * Requires Plugins: woocommerce
  **/
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-define( 'VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION', '1.3.2' );
+define( 'VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION', '1.3.3' );
 include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 add_action( 'before_woocommerce_init', function () {
 	if ( class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
@@ -83,7 +83,7 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
 				new VillaTheme_Support(
 					array(
 						'support'    => 'https://wordpress.org/support/plugin/import-shopify-to-woocommerce/',
-						'docs'       => 'http://docs.villatheme.com/?item=import-shopify-to-woocommerce',
+						'docs'       => 'https://docs.villatheme.com/?item=s2w',
 						'review'     => 'https://wordpress.org/support/plugin/import-shopify-to-woocommerce/reviews/?rate=5#rate-response',
 						'pro_url'    => 'https://1.envato.market/9arQ5',
 						'css'        => VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_CSS,
@@ -2123,8 +2123,25 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
                                     </tr>
                                     <tr>
                                         <td colspan="2">
-                                            <div class="vi-ui positive small message">
-                                                <p class="description"><?php esc_html_e( 'Starting January 1, 2026, you will not be able to create new legacy custom apps. This will not impact any existing apps.', 'import-shopify-to-woocommerce' ) ?></p>
+                                            <div class='title active'>
+                                                <i class="dropdown icon"></i>
+                                                <?php echo wp_kses_post(__('To get Client ID & Secret, you can watch our guiding video below or follow <a href="https://docs.villatheme.com/import-shopify-to-woocommerce/#configuration_child_menu_12700" target="_blank">this guide</a>', 'import-shopify-to-woocommerce' )); ?>
+                                            </div>
+                                            <div class="content active">
+                                                <div class="field">
+                                                    <iframe width="560" height="315"
+                                                            src="https://www.youtube.com/embed/Zu4zi0cCRHU"
+                                                            title="YouTube video player" frameborder="0"
+                                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                            allowfullscreen></iframe>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <div class="vi-ui orange small message">
+                                                <p class="description"><?php esc_html_e( 'Starting January 1, 2026, you will not be able to create new legacy custom apps. However, this will not impact any existing apps. You can use the Access token or API information of the old apps normally.',  'import-shopify-to-woocommerce'  ) ?></p>
                                             </div>
                                         </td>
                                     </tr>
@@ -2163,22 +2180,6 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
                                                    id="<?php echo esc_attr( self::set( 'api_secret' ) ) ?>"
                                                    value="<?php echo esc_attr( htmlentities( $this->settings->get_params( 'api_secret' ) ) ) ?>">
                                             <label for="<?php echo esc_attr( self::set( 'api_secret' ) ) ?>"><?php esc_html_e( 'Password of the API key above', 'import-shopify-to-woocommerce' ) ?></label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th></th>
-                                        <td>
-                                            <div class="title">
-                                                <i class="dropdown icon"></i>
-												<?php esc_html_e( 'Learn how to get Access token', 'import-shopify-to-woocommerce' ) ?>
-                                            </div>
-                                            <div class="content">
-                                                <iframe width="560" height="315"
-                                                        src="https://www.youtube-nocookie.com/embed/1kyEp4d_cfw"
-                                                        title="YouTube video player" frameborder="0"
-                                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                                        allowfullscreen></iframe>
-                                            </div>
                                         </td>
                                     </tr>
                                     <tr>

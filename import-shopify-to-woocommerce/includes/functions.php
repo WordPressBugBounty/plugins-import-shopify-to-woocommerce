@@ -163,3 +163,17 @@ if ( ! function_exists( 'vi_s2w_json_decode' ) ) {
 		return json_decode( $json, $assoc, $depth, $options );
 	}
 }
+if ( ! function_exists( 'vi_s2w_wc_log' ) ) {
+	function vi_s2w_wc_log( $content, $source = 'debug', $level = 'info' ) {
+		if (!$content){
+			return;
+		}
+		$log     = wc_get_logger();
+		$log->log( $level,
+			$content,
+			array(
+				'source' => 's2w-' . $source,
+			)
+		);
+	}
+}

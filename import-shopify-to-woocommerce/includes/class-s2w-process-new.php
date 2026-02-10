@@ -60,14 +60,21 @@ class WP_IMPORT_SHOPIFY_TO_WOOCOMMERCE_Process_New extends WP_Background_Process
 						}
 					} else {
 						S2W_Error_Images_Table::insert( $product_id, implode( ',', $product_ids ), $src, $alt, intval( $set_gallery ), $id );
-						error_log( 'S2W error log - background download images: ' . $thumb_id->get_error_code() . ' - ' . $thumb_id->get_error_message() );
+						if ( is_wp_error( $thumb_id ) ) {
+							vi_s2w_wc_log( 'S2W error log - '.$product_id.' background download images: ' . $thumb_id->get_error_code() . ' - ' . $thumb_id->get_error_message() );
+						}else{
+							ob_start();
+							var_dump('S2W error log - '.$product_id.' background download images - scr:'.$src);
+							var_dump($thumb_id);
+							vi_s2w_wc_log( ob_get_clean());
+						}
 					}
 				}
 			}
 
 		} catch ( Exception $e ) {
 			S2W_Error_Images_Table::insert( $product_id, implode( ',', $product_ids ), $src, $alt, intval( $set_gallery ), $id );
-			error_log( 'S2W error log - background download images: ' . $e->getMessage() );
+			vi_s2w_wc_log( 'S2W error log -'.$product_id.' background download images: ' . $e->getMessage() );
 
 			return false;
 		}

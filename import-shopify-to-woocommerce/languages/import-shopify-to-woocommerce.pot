@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: S2W - Import Shopify to WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-25 10:27+0000\n"
+"POT-Creation-Date: 2026-02-10 07:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -15,134 +15,246 @@ msgstr ""
 "X-Generator: Loco https://localise.biz/\n"
 "X-Loco-Version: 2.2.2; wp-5.3-alpha-45292"
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:233
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:233
 msgid " of "
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:288
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2692
+msgid "1000"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2685
+msgid "300"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2699
+msgid "64M"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2150
+msgid "Access token"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:1972
+msgid "Access token cannot be empty!"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:288
 msgid "Actions"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:30
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:30
 msgctxt "Admin menu name"
 msgid "Failed Images"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:185
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:185
 msgid "All error images"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:385
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2353
+msgid "Also download images from product description in the background."
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:1975
+msgid "API Client ID cannot be empty! "
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2163
+msgid "API key"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:1973
+msgid "API key can not be empty!"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:1974
+msgid "API secret can not be empty!"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:1976
+msgid "API Secret cannot be empty! "
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2175
+msgid "API secret(Password)"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:385
 msgid "Are you sure you want to delete all items on this page?"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:384
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:384
 msgid "Are you sure you want to delete this?"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:50
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:1981
+msgid "Assigning product categories."
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:50
 msgid "Barcode"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:177
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:177
 msgid "Billing Address"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:133
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:133
 msgid "Billing address"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:160
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:1963
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2440
+msgid "Blogs"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:160
 msgid ""
 "By default, the paid order date is determined by the order transaction date, "
 "independently of the order API. As a result, there will be a separate "
 "section with a distinct synchronization option."
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:173
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:1977
+msgid "Can not connect to your Shopify store. Please check your info."
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:173
 msgid "Cancel"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/includes/data.php:535
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/includes/data.php:573
 msgid "Change Cron orders sync"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/includes/data.php:534
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/includes/data.php:572
 msgid "Change Cron products sync"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/includes/data.php:532
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/includes/data.php:570
 msgid "Change the plugin's main settings and import data via API"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/includes/data.php:536
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/includes/data.php:574
 msgid "Change webhooks settings"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:42
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:39
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2051
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:42
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:39
 msgid "Change your API at least once a month"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:167
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:237
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:272
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:1979
+msgid "Checking, please wait ..."
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2397
+msgid "Choose categories you want to add imported products to"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:1980
+msgid ""
+"Click Import to start importing or Update cache to fetch new data to import"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2100
+msgid "Client ID"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:1819
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:1983
+msgid "Completed"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:167
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:237
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:272
 msgid "Copy"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:24
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:33
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:1964
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2442
+msgid "Coupons"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:24
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:33
 msgid "Cron Update Orders"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:52
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:52
 msgid "Cron Update Orders is currently DISABLED"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:21
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:30
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:21
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:30
 msgid "Cron Update Products"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:50
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:50
 msgid "Cron Update Products is currently DISABLED"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:228
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:228
 msgid "Current Page"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/import_by_id.php:98
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:1965
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2441
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/import_by_id.php:98
 msgid "Customers"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:263
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:263
 msgid "Customers Webhook URL"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:68
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:145
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:67
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2450
+msgid "Data"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:68
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:145
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:67
 msgid "Day(s)"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:335
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:335
 msgid "Delete"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:269
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:269
 msgid "Delete All"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:269
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:269
 msgid "Delete all failed images on current page"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:41
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2583
+msgid "Delete import history"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:41
 msgid "Description"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:125
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2335
+msgid "Disable background processing"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2349
+msgid "Download description images"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2321
+msgid "Download images"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2367
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:125
 msgid "Draft"
 msgstr ""
 
@@ -152,48 +264,80 @@ msgid ""
 "WooCommerce after several clicks"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:255
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2451
+msgid "Enable"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2567
+msgid "Enable all"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:255
 msgid "Enable Customers"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:117
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:117
 msgid "Enable Orders"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:185
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:185
 msgid "Enable Products"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:152
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:152
 msgid ""
 "Enable this option to sync product/order data imported from the previous "
 "version 1.2"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/import_by_id.php:110
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/import_by_id.php:110
 msgid "Enter ids of Shopify items separated by \",\" to import."
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:162
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/includes/data.php:538
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:1978
+msgid "Error assigning product categories"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:162
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/includes/data.php:576
 msgid "Failed Images"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:179
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2263
+msgid "Filter results by collection ID"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2247
+msgid "Filter results by product type"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2255
+msgid "Filter results by product vendor"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:179
 msgid "Fulfillments"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:100
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2077
+msgid "General settings"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:100
 msgid "Get"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:99
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:99
 msgid "Get all Shopify metafield keys of current product"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:85
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:84
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:85
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:84
 msgid "Hour"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2423
+msgid "How to use this plugin"
 msgstr ""
 
 #. Author URI of the plugin
@@ -204,208 +348,391 @@ msgstr ""
 msgid "https://villatheme.com/extensions/import-shopify-to-woocommerce"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:43
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:40
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2052
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:43
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:40
 msgid ""
 "If you only use API to import data, remove API permissions or delete the API "
 "after import completed"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:285
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2158
+msgid ""
+"If you still need to use the deprecated private apps, please delete the "
+"access token field above."
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:285
 msgid "Image"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:286
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:286
 msgid "Image alt"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:43
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:43
 msgid "Images"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:333
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2581
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:333
 msgid "Import"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:267
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:267
 msgid "Import All"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:267
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:267
 msgid "Import all failed images on current page"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/import_by_id.php:72
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/import_by_id.php:73
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/includes/data.php:537
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/import_by_id.php:72
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/import_by_id.php:73
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/includes/data.php:575
 msgid "Import by ID"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/import_csv.php:28
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/import_csv.php:29
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/includes/data.php:533
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/import_csv.php:32
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/import_csv.php:33
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/includes/data.php:571
 msgid "Import CSV"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/import_csv.php:88
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/import_csv.php:92
 msgid "Import products from CSV"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/import_by_id.php:86
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2218
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2222
+msgid "Import Products options"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2271
+msgid "Import products published after date"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2279
+msgid "Import products published before date"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2303
+msgid "Import Products sequence"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/import_by_id.php:86
 msgid "Import products, orders or customers by ID"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:281
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:1992
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2063
+msgid "Import Shopify to WooCommerce"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2021
+msgid "Import Shopify to WooCommerce log files"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:1982
+msgid "Importing..."
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:281
 msgid "Index"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:177
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:40
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:177
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:40
 msgid "Inventory"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:161
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2295
+msgid "Keep product slug"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:161
 msgid "Leave blank to update products from all categories"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:135
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:135
 msgid "Line items"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/includes/data.php:539
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2661
+msgid "Log Directory Writable"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:158
+msgid "Log file not found."
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2001
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2002
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/includes/data.php:577
 msgid "Logs"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:51
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2586
+msgid "Logs: "
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2199
+msgid ""
+"Manage required user capability to be able to change settings or use plugin"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2202
+msgid "manage_options = only Administrators can access"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2203
+msgid "manage_woocommerce = both Administrators and Shop managers can access"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2695
+msgid "Memory Limit"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:51
 msgid "Metafields"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:95
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:94
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2603
+msgid "Minimum recommended value"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:95
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:94
 msgid "Minute"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:254
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:254
 msgid "Next Page"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:106
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:106
 msgid "No data"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:136
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:796
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:1758
+msgid "No data to import"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:154
+msgid "No log file selected."
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:161
+msgid "Not supported"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2201
+msgid ""
+"Only Administrators can access required user capability settings and API "
+"credentials "
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:136
 msgid "Only update orders created in the last x day(s):"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:114
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:114
 msgid "Only update orders with status:"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:139
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:139
 msgid "Only update products of these categories:"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:113
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:113
 msgid "Only update products with status:"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:131
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2601
+msgid "Option name"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2311
+msgid "Order by Created Date Ascending"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2312
+msgid "Order by Created Date Descending"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2309
+msgid "Order by Title Ascending"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2310
+msgid "Order by Title Descending"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2313
+msgid "Order by Updated Date Ascending"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2314
+msgid "Order by Updated Date Descending"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:131
 msgid "Order date"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:132
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:132
 msgid "Order fulfillments"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:130
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:130
 msgid "Order status"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/import_by_id.php:97
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:1967
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2443
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/import_by_id.php:97
 msgid "Orders"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:158
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:158
 msgid "Orders Webhook URL"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:124
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:1962
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2439
+msgid "Pages"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2182
+msgid "Password of the API key above"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:1959
+msgid "Payments"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2366
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:124
 msgid "Pending"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:219
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2688
+msgid "PHP Max Input Vars"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2681
+msgid "PHP Time Limit"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:219
 msgid "Previous Page"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:176
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:39
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:176
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:39
 msgid "Price"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:201
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2375
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2435
+msgid "Product categories"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:201
 msgid "Product description"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:282
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:282
 msgid "Product ID"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:202
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:202
 msgid "Product images"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:200
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2329
+msgid "Product images will be downloaded in the background."
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:200
 msgid "Product inventory"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:103
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:103
 msgid "Product not exist"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:199
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:199
 msgid "Product price"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:47
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:205
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:47
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:205
 msgid "Product slug"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:283
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2358
+msgid "Product status"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:283
 msgid "Product Title"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:198
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:198
 msgid "Product title"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:284
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:284
 msgid "Product/Variation IDs"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/import_by_id.php:96
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:1966
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2434
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/import_by_id.php:96
 msgid "Products"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:228
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2228
+msgid "Products per ajax request"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:228
 msgid "Products Webhook URL"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:123
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2365
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:123
 msgid "Publish"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:49
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:49
 msgid "Published date"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:74
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:73
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2187
+msgid "Request timeout(s)"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2622
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2640
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2658
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2673
+msgid "Required"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2239
+msgid "Restrict results to after the specified ID"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:74
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:73
 msgid "Run update at"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:59
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:58
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:59
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:58
 msgid "Run update every"
 msgstr ""
 
@@ -413,147 +740,271 @@ msgstr ""
 msgid "S2W - Import Shopify to WooCommerce"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:288
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:250
+msgid ""
+"S2W - Import Shopify to WooCommerce: Product images are being downloaded in "
+"the background."
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:283
+msgid ""
+"S2W - Import Shopify to WooCommerce: Product images are downloaded "
+"successfully."
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:266
+msgid ""
+"S2W - Import Shopify to WooCommerce: There are products images in the queue."
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2403
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2408
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:288
 msgid "Save"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:105
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:104
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:105
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:104
 msgid "Second"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:166
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:166
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2111
+msgid "Secret"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:166
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:166
 msgid "Select options to update"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:147
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:147
 msgid "Set 0 to skip filtering orders by date range"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:287
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:287
 msgid "Set gallery"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:178
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:204
+msgid "Settings"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:178
 msgid "Shipping Address"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:134
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:134
 msgid "Shipping address"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:37
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:34
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:1960
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2437
+msgid "Shipping zones"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2046
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:37
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:34
 msgid "Shopify Admin API security recommendation"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:93
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:93
 msgid "Shopify metafield key"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:21
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:21
 msgid "Shopify sync"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:164
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:1992
+msgid "Shopify to Woo"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:164
 msgid "Show these options when clicking on \"Sync\" button on each product"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:176
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:42
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:1637
+msgid "Skip because product exists"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2144
+msgid ""
+"Starting January 1, 2026, you will not be able to create new legacy custom "
+"apps. However, this will not impact any existing apps. You can use the "
+"Access token or API information of the old apps normally."
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2452
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:176
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:42
 msgid "Status"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:67
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2370
+msgid "Status of products after importing successfully"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2088
+msgid "Store address"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:1971
+msgid "Store address can not be empty!"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:1958
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2436
+msgid "Store settings"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:67
 msgid "Sync options"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:152
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:152
 msgid "Sync order date paid"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:48
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2009
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2010
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2597
+msgid "System Status"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:48
 msgid "Tags"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/import_csv.php:91
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:1961
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2438
+msgid "Taxes"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2170
+msgid "The API key that has the right to access your products"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/import_csv.php:95
 msgid "This is a Premium feature."
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:153
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2316
+msgid "This is to sort the results after applying all filters above if any"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:153
 msgid "This option is used for updating order via webhook"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:223
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:223
 msgid "This option is used for updating product via webhook"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:386
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:386
 msgid ""
 "This will remove all Failed images from database, do you want to continue?"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:38
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:38
 msgid "Title"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:41
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:38
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2128
+msgid ""
+"To get Client ID & Secret, you can watch our guiding video below or follow "
+"<a href=\"https://docs.villatheme.com/import-shopify-to-"
+"woocommerce/#configuration_child_menu_12700\" target=\"_blank\">this "
+"guide</a>"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2050
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:41
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:38
 msgid ""
 "Treat the API key and password like you would any other password, since "
 "whoever has access to these credentials has API access to the store."
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:125
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:193
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:125
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:193
 msgid "Update which?"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:45
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:203
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2710
+msgid "Upgrade this feature"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2287
+msgid "Use global attributes"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:45
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:203
 msgid "Variation attributes"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:46
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:204
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:46
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:204
 msgid "Variation SKU"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:44
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:44
 msgid "Variations"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2033
+msgid "View"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2475
+msgid "View settings"
 msgstr ""
 
 #. Author of the plugin
 msgid "VillaTheme"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:74
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:83
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:74
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:83
 msgid "Webhooks"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:93
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:93
 msgid "Webhooks shared secret"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:189
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:189
 msgid "Which order data do you want to update?"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:103
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/update_products.php:103
 msgid "Woo product meta key"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:350
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:151
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/error_images.php:350
 msgid "You don't have any error images. "
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:104
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/webhooks.php:104
 msgid "You must create at least 1 webhook to see the shared secret"
 msgstr ""
 
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:40
-#: C:/villatheme-2017/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:37
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2069
+msgid ""
+"You need to enter correct domain, API key and API secret to be able to import"
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2049
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_orders.php:40
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/admin/cron_update_products.php:37
 msgid "You should enable only what is necessary for your app to work."
+msgstr ""
+
+#: D:/git/free-version/import-shopify-to-woocommerce/import-shopify-to-woocommerce/import-shopify-to-woocommerce.php:2602
+msgid "Your option value"
 msgstr ""
