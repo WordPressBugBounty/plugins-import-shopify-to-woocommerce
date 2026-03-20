@@ -5,7 +5,7 @@ Tags: import, migration, SHOPIFY, woocommerce
 Requires at least: 5.0.0
 Tested up to: 6.9
 WC requires at least: 7.0
-WC tested up to: 10.5
+WC tested up to: 10.6
 Requires PHP: 7.0
 Stable tag: trunk
 License: GPLv2 or later
@@ -243,6 +243,9 @@ Preview S2W - Import Shopify to WooCommerce
 6. Webhooks
 
 == Changelog ==
+/**1.3.4 - 2026.03.20**/
+- Updated: Compatible with WC 10.6
+
 /**1.3.3 - 2026.02.10**/
 - Updated: Instructions on how to get the Client ID & Secret
 
