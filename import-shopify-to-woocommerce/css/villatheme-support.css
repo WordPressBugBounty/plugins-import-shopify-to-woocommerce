@@ -81,14 +81,14 @@
   background: #484848;
   color: #fff;
 }
+#villatheme-support .villatheme-support-head .villatheme-support-action .button.request-support:hover .icon {
+  background: #21ba45;
+  color: #fff;
+}
 #villatheme-support .villatheme-support-head .villatheme-support-action .button.request-support:hover {
   box-shadow: 0 0 0 1px #21ba45 inset !important;
   color: #21ba45;
   background: #fff;
-}
-#villatheme-support .villatheme-support-head .villatheme-support-action .button.request-support:hover .icon {
-  background: #21ba45;
-  color: #fff;
 }
 #villatheme-support .villatheme-items {
   display: inline-flex;
@@ -112,7 +112,7 @@
   transform: scale(1.2);
 }
 #villatheme-support .villatheme-items .villatheme-item:hover {
-  box-shadow: 0 0 4px #00000073;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.4509803922);
 }
 
 .villatheme-dashboard p {
@@ -182,7 +182,7 @@
 .villatheme-extension-content .villatheme-col-3 {
   width: 330px;
   max-width: calc(100% - 80px);
-  box-shadow: 0 0 4px #00000026;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1490196078);
   background: #fff;
   color: #000;
   border-radius: 10px;
@@ -232,7 +232,7 @@
 }
 
 .villatheme-primary-color {
-  color: #f15d58;
+  color: rgb(241, 93, 88);
   text-decoration: none;
 }
 
@@ -248,6 +248,7 @@
   padding: 4px 8px;
   font-size: 12px;
   line-height: 16px;
+  width: auto;
 }
 
 .villatheme-button-upgrade {
@@ -323,7 +324,6 @@
   .villatheme-content {
     padding-right: 0 !important;
   }
-
   .villatheme-content a.vi-button-dismiss {
     position: unset;
     transform: unset !important;
