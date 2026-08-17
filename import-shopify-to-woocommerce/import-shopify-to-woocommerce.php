@@ -3,7 +3,7 @@
  * Plugin Name: S2W - Import Shopify to WooCommerce
  * Plugin URI: https://villatheme.com/extensions/import-shopify-to-woocommerce
  * Description: Easily migrate all Shopify products and their collections(categories) to WooCommerce after several clicks
- * Version: 1.3.5
+ * Version: 1.3.6
  * Author: VillaTheme
  * Author URI: https://villatheme.com
  * License:           GPL v2 or later
@@ -13,14 +13,14 @@
  * Copyright 2019-2026 VillaTheme.com. All rights reserved.
  * Tested up to: 7.0
  * WC requires at least: 7.0.0
- * WC tested up to: 10.8.1
+ * WC tested up to: 11.0
  * Requires PHP: 7.0
  * Requires Plugins: woocommerce
  **/
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-define( 'VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION', '1.3.5' );
+define( 'VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION', '1.3.6' );
 include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 add_action( 'before_woocommerce_init', function () {
 	if ( class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
@@ -85,7 +85,7 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
 						'support'    => 'https://wordpress.org/support/plugin/import-shopify-to-woocommerce/',
 						'docs'       => 'https://docs.villatheme.com/?item=s2w',
 						'review'     => 'https://wordpress.org/support/plugin/import-shopify-to-woocommerce/reviews/?rate=5#rate-response',
-						'pro_url'    => 'https://1.envato.market/9arQ5',
+						'pro_url'    => 'https://villatheme.com/extensions/s2w-import-shopify-to-woocommerce/',
 						'css'        => VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_CSS,
 						'image'      => VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_IMAGES,
 						'slug'       => 'import-shopify-to-woocommerce',
@@ -2705,7 +2705,7 @@ if ( ! class_exists( 'IMPORT_SHOPIFY_TO_WOOCOMMERCE' ) ) {
 
 		public static function upgrade_button() {
 			?>
-            <a href="https://1.envato.market/9arQ5"
+            <a href="https://villatheme.com/extensions/s2w-import-shopify-to-woocommerce/"
                target="_blank"
                class="vi-ui button yellow"><?php esc_html_e( 'Upgrade this feature', 'import-shopify-to-woocommerce' ) ?></a>
 			<?php
