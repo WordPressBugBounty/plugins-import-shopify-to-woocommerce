@@ -52,7 +52,7 @@ class IMPORT_SHOPIFY_TO_WOOCOMMERCE_ADMIN_Error_Images {
 		);
 		if ( $id ) {
 			$data = S2W_Error_Images_Table::get_row( $id );
-			if ( count( $data ) ) {
+			if ( is_array( $data ) && $data ) {
 				$product_id = $data['product_id'];
 				$image_id   = isset( $data['image_id'] ) ? $data['image_id'] : '';
 				$post       = get_post( $product_id );
@@ -150,7 +150,7 @@ class IMPORT_SHOPIFY_TO_WOOCOMMERCE_ADMIN_Error_Images {
 		$option = 'per_page';
 
 		$args = array(
-			'label'   => esc_html__( 'Number of items per page', 'wp-admin' ),
+			'label'   => esc_html__('Number of items per page', 'import-shopify-to-woocommerce'),
 			'default' => 10,
 			'option'  => 's2w_error_images_per_page'
 		);
@@ -367,8 +367,12 @@ class IMPORT_SHOPIFY_TO_WOOCOMMERCE_ADMIN_Error_Images {
 		wp_enqueue_style( 'import-shopify-to-woocommerce-segment', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_CSS . 'segment.min.css', '', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION );
 		wp_enqueue_style( 'import-shopify-to-woocommerce-button', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_CSS . 'button.min.css', '', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION );
 		wp_enqueue_style( 'select2', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_CSS . 'select2.min.css','',VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_VERSION );
-		if ( woocommerce_version_check( '3.0.0' ) ) {
+		if ( wp_script_is( 'selectWoo', 'registered' ) ) {
+			wp_enqueue_script( 'selectWoo' );
+		} elseif ( wp_script_is( 'wc-select2', 'registered' ) ) {
 			wp_enqueue_script( 'wc-select2' );
+		} elseif ( wp_script_is( 'select2', 'registered' ) ) {
+			wp_enqueue_script( 'select2' );
 		} else {
 			wp_enqueue_script( 'select2-v4', VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_JS . 'select2.js', array( 'jquery' ), '4.0.3', true );
 		}

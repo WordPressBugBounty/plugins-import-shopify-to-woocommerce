@@ -2,11 +2,11 @@
 Contributors: villatheme, mrt3vn
 Donate link: https://www.villatheme.com/donate
 Tags: import, migration, SHOPIFY, woocommerce
-Requires at least: 5.0.0
-Tested up to: 7.0
-WC requires at least: 7.0.0
-WC tested up to: 11.0
-Requires PHP: 7.0
+Requires at least: 6.2
+Tested up to: 7.1
+WC requires at least: 7.0
+WC tested up to: 11.2
+Requires PHP: 7.4
 Stable tag: trunk
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -243,6 +243,10 @@ Preview S2W - Import Shopify to WooCommerce
 6. Webhooks
 
 == Changelog ==
+2026.11.06 - version 1.3.8
+- Fixed: Incorrect text domain in translation function calls
+- Updated: VillaTheme support
+
 2026.08.17 - version 1.3.6
 - Updated: Change premium version url
 

@@ -152,11 +152,13 @@ class VI_IMPORT_SHOPIFY_TO_WOOCOMMERCE_DATA {
 				$dirPath .= '/';
 			}
 			$files = glob( $dirPath . '*', GLOB_MARK );
-			foreach ( $files as $file ) {
-				if ( is_dir( $file ) ) {
-					self::deleteDir( $file );
-				} else {
-					wp_delete_file( $file );//phpcs:ignore WordPress.WP.AlternativeFunctions.unlink_unlink
+			if ( is_array( $files ) ) {
+				foreach ( $files as $file ) {
+					if ( is_dir( $file ) ) {
+						self::deleteDir( $file );
+					} else {
+						wp_delete_file( $file );//phpcs:ignore WordPress.WP.AlternativeFunctions.unlink_unlink
+					}
 				}
 			}
 			rmdir( $dirPath );//phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_rmdir
@@ -457,10 +459,16 @@ Deny from all
 			$links = explode( ',', $link );
 			foreach ( $links as $url ) {
 				$params = wp_parse_url( $url );
-				parse_str( $params['query'], $query );
+				if ( ! is_array( $params ) || empty( $params['query'] ) ) {
+					continue;
+				}
+				parse_str( (string) $params['query'], $query );
 				if ( ! empty( $query['page_info'] ) ) {
 					$query_params = explode( '>;', $query['page_info'] );
-					if ( trim( $query_params[1] ) === 'rel="next"' ) {
+					if ( ! isset( $query_params[1] ) ) {
+						continue;
+					}
+					if ( trim( (string) $query_params[1] ) === 'rel="next"' ) {
 						$page_link['next'] = $query_params[0];
 					} else {
 						$page_link['previous'] = $query_params[0];
@@ -474,10 +482,17 @@ Deny from all
 
 	public static function download_image( &$shopify_id, $url, $post_parent = 0, $exclude = array(), $post_title = '', $desc = null ) {
 		global $wpdb;
+		if ( ! is_string( $url ) || $url === '' ) {
+			return false;
+		}
 		$new_url   = $url;
 		$parse_url = wp_parse_url( $new_url );
+		if ( ! is_array( $parse_url ) || empty( $parse_url['host'] ) ) {
+			return false;
+		}
 		$scheme    = empty( $parse_url['scheme'] ) ? 'http' : $parse_url['scheme'];
-		$image_id  = "{$parse_url['host']}{$parse_url['path']}";
+		$path      = isset( $parse_url['path'] ) ? $parse_url['path'] : '';
+		$image_id  = "{$parse_url['host']}{$path}";
 		$new_url   = "{$scheme}://{$image_id}";
 		$reg       = self::get_image_file_extension_reg();
 		preg_match( $reg, $new_url, $matches );
@@ -503,7 +518,7 @@ Deny from all
 	}
 
 	public static function sanitize_taxonomy_name( $name ) {
-		return strtolower( urlencode( wc_sanitize_taxonomy_name( $name ) ) );
+		return wc_sanitize_taxonomy_name( $name );
 	}
 
 	public static function wp_kses_post( $content ) {

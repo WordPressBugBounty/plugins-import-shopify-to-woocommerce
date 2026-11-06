@@ -15,6 +15,9 @@ if ( ! function_exists( 'vi_include_folder' ) ) {
 			$ext = array_map( 'trim', $ext );
 		}
 		$sfiles = scandir( $path );
+		if ( ! is_array( $sfiles ) ) {
+			return;
+		}
 		foreach ( $sfiles as $sfile ) {
 			if ( $sfile != '.' && $sfile != '..' ) {
 				if ( is_file( $path . "/" . $sfile ) ) {
@@ -160,7 +163,15 @@ if ( ! function_exists( 'woocommerce_version_check' ) ) {
 }
 if ( ! function_exists( 'vi_s2w_json_decode' ) ) {
 	function vi_s2w_json_decode( $json, $assoc = true, $depth = 512, $options = 2 ) {
-		return json_decode( $json, $assoc, $depth, $options );
+		if ( ! is_string( $json ) || $json === '' ) {
+			return $assoc ? array() : null;
+		}
+		$decoded = json_decode( $json, $assoc, $depth, $options );
+		if ( $assoc && ! is_array( $decoded ) ) {
+			return array();
+		}
+
+		return $decoded;
 	}
 }
 if ( ! function_exists( 'vi_s2w_wc_log' ) ) {
